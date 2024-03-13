@@ -1,14 +1,16 @@
-const express = require("express");
-const morgan = require("morgan");
-const dotenv = require("dotenv");
-const handler404 = require("./Middlewares/404.js");
+import express  from "express";
+import morgan from "morgan";
+import dotenv from "dotenv";
+import handler404 from "./Middlewares/404.js";
 
-dotenv.config({ path: "./config.env" })
+dotenv.config({ path: "./config.env" });
 const app = express();
 
 
 // Middleware
 app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
 
 // Dev logging
 if (process.env.NODE_ENV === "development")
@@ -25,4 +27,4 @@ app.get('/', (req, res) => {
 app.use(handler404);
 
 
-module.exports = app;
+export default app;

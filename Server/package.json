@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "api for the workflow manager",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "node server.js"
   },
@@ -17,3 +18,4 @@
     "sequelize": "^6.37.1"
   }
 }
+ 

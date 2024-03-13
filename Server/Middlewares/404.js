@@ -5,4 +5,4 @@ const handler404 = (req,res) => {
     })
 }
 
-module.exports = handler404;
+export default handler404;
