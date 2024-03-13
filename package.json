@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install-server": "cd BackEnd && npm install",
-    "start-server": "cd BackEnd && node server.js",
-    "install-front-end": "cd FrontEnd && npm install",
-    "build-front-end" : "cd FrontEnd && npm run build",
-    "start-front-end": "cd FrontEnd && npm run preview"
+    "install-server": "cd Server && npm install",
+    "start-server": "cd Server && node server.js",
+    "install-front-end": "cd Client && npm install",
+    "build-front-end" : "cd Client && npm run build",
+    "start-front-end": "cd Client && npm run preview"
   },
   "keywords": [],
   "author": "",
