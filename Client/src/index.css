@@ -6,7 +6,7 @@ html {
   margin: 0;
   height: 100%;
   font-size: 20px;
-  font-family: 'inter', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   background-color: #f7f7f7;
 }
 * {
@@ -15,16 +15,58 @@ html {
 }
 
 :root {
+  --color-white-50: #FFFFFF;
+  --color-white-100: #F5F5F5;
+  --color-grey: #D2D6DE;
+  --color-black: #000000;
+  --color-black-light: rgba(0, 0, 0, 0.1);
 }
 
-/*
-// <uniquifier>: Use a unique and descriptive class name
-// <weight>: Use a value from 100 to 700
-
-.josefin-sans-<uniquifier> {
+.josefin-sans-thin {
   font-family: "Josefin Sans", sans-serif;
   font-optical-sizing: auto;
-  font-weight: <weight>;
+  font-weight: 100;
   font-style: normal;
 }
-*/
+
+.josefin-sans-extralight {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.josefin-sans-light {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.josefin-sans-regular {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.josefin-sans-medium {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.josefin-sans-semibold {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.josefin-sans-bold {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
