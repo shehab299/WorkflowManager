@@ -10,6 +10,8 @@ html {
   background-color: #f7f7f7;
 }
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
@@ -20,6 +22,15 @@ html {
   --color-grey: #D2D6DE;
   --color-black: #000000;
   --color-black-light: rgba(0, 0, 0, 0.1);
+
+  --font-size-extratiny: 10px;
+  --font-size-tiny: 12px;
+  --font-size-extrasmall: 14px;
+  --font-size-small: 16px;
+  --font-size-normal: 18px;
+  --font-size-subtitle: 22px;
+  --font-size-title: 26px;
+  --font-size-hero: 40px;
 }
 
 .josefin-sans-thin {
