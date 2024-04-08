@@ -6,6 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import SignUp from './pages/SignUp';
+import Login from './pages/Login';
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -24,8 +25,8 @@ function App() {
         </Routes>
       ) : (
         <Routes>
-          <Route path="/login" element={<SignUp onClick={handleLogin} />} />
-          <Route path="/signup" element={<SignUp onClick={handleLogin} />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/*" element={<Navigate to="/signup" />} />
           <Route path="/" element={<Navigate to="/signup" />} />
         </Routes>
