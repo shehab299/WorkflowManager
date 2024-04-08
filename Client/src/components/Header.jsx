@@ -12,9 +12,12 @@ const Header = () => {
         <div className={HeaderCSS.headerTitle}>
           <h1 className="josefin-sans-bold">Cairo University</h1>
         </div>
-        <div className={`${InputCSS.btn} ${InputCSS.btn_1} josefin-sans-bold`}>
+        <button
+          id="goto-login"
+          className={`${InputCSS.btn} ${InputCSS.btn_1} josefin-sans-bold`}
+        >
           Login
-        </div>
+        </button>
       </div>
     </header>
   );

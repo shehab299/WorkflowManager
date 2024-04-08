@@ -1,6 +1,6 @@
 .btn {
   border-radius: 9px;
-  padding: 1rem 1.6rem;
+  padding: 0.8rem 1.3rem;
 }
 
 .btn_1 {
@@ -13,4 +13,13 @@
 .btn_1:hover {
   background-color: var(--color-black);
   color: var(--color-white-50);
+}
+
+.inputBox {
+  height: 45px;
+  border-radius: 6px;
+  border: 3px solid var(--color-black);
+  background-color: var(--color-black-opacity-5);
+  padding: 0.6rem 0.8rem;
+  font-size: var(--font-size-small);
 }
