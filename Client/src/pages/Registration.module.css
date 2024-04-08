@@ -47,6 +47,31 @@
   padding: 0 0.2rem;
 }
 
+.link {
+  padding: 0.2rem;
+  font-size: var(--font-size-small);
+  cursor: pointer;
+  width: fit-content;
+  transition: 0.15s all ease;
+  position: relative;
+}
+
+.link::after {
+  position: absolute;
+  content: "";
+  height: 1px;
+  width: 0%;
+  bottom: 5%;
+  right: 50%;
+  translate: 50% 0;
+  background-color: var(--color-black);
+  transition: 0.15s all ease;
+}
+
+.link:hover::after {
+  width: 95%;
+}
+
 .btnSection {
   padding: 1rem 0;
   display: flex;
