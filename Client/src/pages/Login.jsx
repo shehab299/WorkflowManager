@@ -3,32 +3,17 @@ import Header from "../components/Header";
 import RegistrationCSS from "./Registration.module.css";
 import InputCSS from "../components/Input.module.css";
 
-const SignUp = () => {
+const Login = () => {
+
   return (
     <div>
-      <Header navigateTo="/login"/>
+      <Header navigateTo="/signup"/>
       <main className={RegistrationCSS.body}>
         <div className={RegistrationCSS.flexContainer_column}>
           <h2 className={`${RegistrationCSS.title} josefin-sans-bold`}>
-            Create Account
+            Welcome Back
           </h2>
           <div className={RegistrationCSS.gridContainer}>
-            <div
-              className={`${RegistrationCSS.flexContainer_column} ${RegistrationCSS.gridSection_small}`}
-            >
-              <label for="fname" className="josefin-sans-bold">
-                First Name
-              </label>
-              <input type="text" id="fname" className={InputCSS.inputBox} />
-            </div>
-            <div
-              className={`${RegistrationCSS.flexContainer_column} ${RegistrationCSS.gridSection_small}`}
-            >
-              <label for="lname" className="josefin-sans-bold">
-                Last Name
-              </label>
-              <input type="text" id="lname" className={InputCSS.inputBox} />
-            </div>
             <div
               className={`${RegistrationCSS.flexContainer_column} ${RegistrationCSS.gridSection}`}
             >
@@ -48,18 +33,7 @@ const SignUp = () => {
                 id="password"
                 className={InputCSS.inputBox}
               />
-            </div>
-            <div
-              className={`${RegistrationCSS.flexContainer_column} ${RegistrationCSS.gridSection}`}
-            >
-              <label for="cpassword" className="josefin-sans-bold">
-                Confirm Password
-              </label>
-              <input
-                type="password"
-                id="cpassword"
-                className={InputCSS.inputBox}
-              />
+              <span className={`${RegistrationCSS.link} josefin-sans-light`}>Forgot Password?</span>
             </div>
           </div>
           <div className={`${RegistrationCSS.btnSection}`}>
@@ -67,7 +41,7 @@ const SignUp = () => {
               id="signup-btn"
               className={`${InputCSS.btn} ${InputCSS.btn_1} josefin-sans-bold`}
             >
-              Sign Up
+              Login
             </button>
           </div>
         </div>
@@ -76,4 +50,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Login
