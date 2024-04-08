@@ -1,47 +1,66 @@
-const express = require('express');
+import { Router } from "express";
 
-const adminController = require('../Middlewares/admin');
+import {
+  addRequest,
+  addUser,
+  addWorkflow,
+  deleteRequest,
+  deleteUser,
+  deleteWorkflow,
+  editRequest,
+  editUser,
+  editWorkflow,
+  getAllRequests,
+  getDrafts,
+  getIndex,
+  getRequest,
+  getRequests,
+  getUser,
+  getUsers,
+  getWorkflow,
+  getWorkflows,
+} from "../controllers/admin.controller";
 
-const router = express.Router();
+const router = Router();
 
 // GET Admin Dashboard Info
-router.get('/', adminController.getIndex);
+router.get("/", getIndex);
 
 // GET All Users
-router.get('/users', adminController.getUsers);
+router.get("/users", getUsers);
 // GET User Info
-router.get('/user/:userId', adminController.getUser);
+router.get("/user/:userId", getUser);
 // Add User
-router.post('/user', adminController.addUser);
+router.post("/user", addUser);
 // Edit User
-router.put('/user/:userId', adminController.editUser);
+router.put("/user/:userId", editUser);
 // Remove User
-router.delete('/user/:userId', adminController.deleteUser);
+router.delete("/user/:userId", deleteUser);
 
 // GET All Users Requests
-router.get('/all-requests/', adminController.getAllRequests);
+router.get("/all-requests/", getAllRequests);
 // GET User Requests
-router.get('/requests/:userId', adminController.getRequests);
+router.get("/requests/:userId", getRequests);
 // GET User Drafts
-router.get('/drafts/:userId', adminController.getDrafts);
+router.get("/drafts/:userId", getDrafts);
 // GET A Requests
-router.get('/request/:requestId', adminController.getRequest);
+router.get("/request/:requestId", getRequest);
 // Add A Request
-router.post('/request', adminController.addRequest);
+router.post("/request", addRequest);
 // Edit A Request
-router.put('/request/:requestId', adminController.editRequest);
+router.put("/request/:requestId", editRequest);
 // Remove A Request
-router.delete('/request/:requestId', adminController.deleteRequest);
+router.delete("/request/:requestId", deleteRequest);
 
 // GET Workflows
-router.get('/workflow/', adminController.getWorkflows);
+router.get("/workflow/", getWorkflows);
 // GET Workflow Requirements
-router.get('/workflow/:workflowId', adminController.getWorkflow);
+router.get("/workflow/:workflowId", getWorkflow);
 // Add Workflow
-router.post('/workflow/:workflowId', adminController.addWorkflow);
+router.post("/workflow/:workflowId", addWorkflow);
 // Edit Workflow Requirements
-router.put('/workflow/:workflowId', adminController.editWorkflow);
+router.put("/workflow/:workflowId", editWorkflow);
 // Remove Workflow
-router.delete('/workflow/:workflowId', adminController.deleteWorkflow);
+router.delete("/workflow/:workflowId", deleteWorkflow);
 
-module.exports = router;
+export default router;

@@ -1,26 +1,35 @@
-const express = require('express');
+import { Router } from "express";
 
-const userController = require('../Middlewares/user');
+import {
+  addRequest,
+  getDrafts,
+  getProfile,
+  getRequest,
+  getRequests,
+  getUser,
+  getWorkflow,
+  getWorkflows,
+} from "../controllers/user.controller";
 
-const router = express.Router();
+const router = Router();
 
 // GET User Dashboard Info
-router.get('/', userController.getProfile);
+router.get("/", getProfile);
 
 // GET User Info
-router.get('/user/:userId', userController.getUser);
+router.get("/user/:userId", getUser);
 
 // GET User Requests
-router.get('/requests/:userId', userController.getRequests);
+router.get("/requests/:userId", getRequests);
 // GET User Drafts
-router.get('/drafts/:userId', userController.getDrafts);
+router.get("/drafts/:userId", getDrafts);
 // GET A Requests
-router.get('/request/:requestId', userController.getRequest);
+router.get("/request/:requestId", getRequest);
 // Add A Request
-router.post('/request', userController.addRequest);
+router.post("/request", addRequest);
 
 // GET Workflows
-router.get('/workflow/', userController.getWorkflows);
+router.get("/workflow/", getWorkflows);
 // GET Workflow Requirements
-router.get('/workflow/:workflowId', userController.getWorkflow);
-module.exports = router;
+router.get("/workflow/:workflowId", getWorkflow);
+export default router;
