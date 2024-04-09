@@ -3,6 +3,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import handler404 from "./Middlewares/404.js";
 
+
 import { faker } from '@faker-js/faker';
 import User from "./models/user.js";
 
@@ -24,6 +25,7 @@ if (process.env.NODE_ENV === "development")
 app.get('/', (req, res) => {
     res.send("HI");
 });
+
 
 // user test
 
@@ -48,6 +50,7 @@ app.get('/', (req, res) => {
 //     // Handle any errors that occurred during the query
 //     console.error('Error retrieving users:', err);
 //   });
+
 
 
 //404 ERROR
