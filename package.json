@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "install-server": "cd Server && npm install",
-    "start-server": "cd Server && node server.js",
+    "start-server": "cd Server && nodemon server.js",
     "install-front-end": "cd Client && npm install",
     "build-front-end" : "cd Client && npm run build",
     "start-front-end": "cd Client && npm run preview"
