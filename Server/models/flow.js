@@ -1,8 +1,7 @@
 import DataTypes from "sequelize";
 import sequelize from "../utils/db.js";
 
-
-const WorkflowSchema = {
+const FlowInstanceSchema = { 
 
   id: {
     type: DataTypes.BIGINT,
@@ -11,13 +10,11 @@ const WorkflowSchema = {
     autoIncrement: true,
   },
 
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  
 }
 
-const Workflow = sequelize.define('workflow', WorkflowSchema);
+const FlowInstance = sequelize.define("flow", FlowInstanceSchema);
 
-export default Workflow;
+
+export default FlowInstance;
+
+
