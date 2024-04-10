@@ -1,22 +1,24 @@
-import User from "./user";
 import sequelize from "../utils/db.js";
-import DataTypes from "sequelize";
+import DataTypes from "sequelize"
 
-//Creating the User model
-const Request = sequelize.define("request", {
+const RequestSchema = {
   id: {
     type: DataTypes.BIGINT,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
   },
+
   comment: {
     type: DataTypes.STRING,
-    allowNullL: false,
+    allowNull: false,
   },
-});
+};
 
-Request.belongsTo(User, { as: "To", foreignKey: "id" });
+const Request = sequelize.define("request", RequestSchema);
+
+export default Request;
+
 
 //to get and set the "to"
 // const Request = await Stage.findByPk(requestid);
@@ -27,8 +29,3 @@ Request.belongsTo(User, { as: "To", foreignKey: "id" });
 // demo.sync({ force: true }): Create the table and drop the first if it already exists.
 // demo.sync({ alter: true }): Check the current state of the table in the database and perform necessary changes in the table to make it match the model.
 
-Request.sync({ alter: true }).then(() => {
-  console.log("Request Model synced");
-});
-
-export default Request;

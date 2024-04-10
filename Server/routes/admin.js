@@ -111,4 +111,4 @@ router.put('/workflow/:workflowId', adminController.editWorkflow);
 // Remove Workflow
 router.delete('/workflow/:workflowId', adminController.deleteWorkflow);
 
-module.exports = router;
+export default router;

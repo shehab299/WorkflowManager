@@ -4,7 +4,9 @@ import Sequelize from "sequelize";
 
 dotenv.config();
 
-const sequelize = new Sequelize(process.env.POSTGRESQL_DB_URI, {
+const connectionString = "postgres://shehab:WiTb22laFbPY3SnMIwVyjUKFFNX9VbSs@dpg-cnjqot0cmk4c739ih6ng-a.oregon-postgres.render.com/flow_manager";
+
+const sequelize = new Sequelize(connectionString, {
   dialect: "postgres",
   dialectOptions: {
     ssl: {
@@ -13,10 +15,5 @@ const sequelize = new Sequelize(process.env.POSTGRESQL_DB_URI, {
     },
   },
 });
-
-sequelize
-  .authenticate()
-  .then(() => console.log("Database connected..."))
-  .catch((err) => console.error("Unable to connect to the database:", err));
 
 export default sequelize;
