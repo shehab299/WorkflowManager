@@ -1,9 +1,11 @@
 import React from "react";
+import { useAuth } from '../utils/AuthContext';
 import Header from "../components/Header";
 import RegistrationCSS from "./Registration.module.css";
 import InputCSS from "../components/Input.module.css";
 
 const Login = () => {
+  const { login } = useAuth();
 
   return (
     <div>
@@ -40,6 +42,7 @@ const Login = () => {
             <button
               id="signup-btn"
               className={`${InputCSS.btn} ${InputCSS.btn_1} josefin-sans-bold`}
+              onClick={login}
             >
               Login
             </button>
