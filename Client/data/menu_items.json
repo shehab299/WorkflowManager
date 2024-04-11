@@ -1,10 +1,10 @@
 [
   {
     "title": "dashboard",
-    "path": "assets/icons/dashboard.png"
+    "path": "./icons/dashboard.png"
   },
   {
     "title": "workflow",
-    "path": "assets/icons/workflow.png"
+    "path": "./icons/workflow.png"
   }
 ]
