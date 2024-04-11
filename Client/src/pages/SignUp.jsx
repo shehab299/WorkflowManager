@@ -1,12 +1,15 @@
 import React from "react";
+import { useAuth } from "../utils/AuthContext";
 import Header from "../components/Header";
 import RegistrationCSS from "./Registration.module.css";
 import InputCSS from "../components/Input.module.css";
 
 const SignUp = () => {
+  const { login } = useAuth();
+
   return (
     <div>
-      <Header navigateTo="/login"/>
+      <Header navigateTo="/login" />
       <main className={RegistrationCSS.body}>
         <div className={RegistrationCSS.flexContainer_column}>
           <h2 className={`${RegistrationCSS.title} josefin-sans-bold`}>
@@ -66,6 +69,7 @@ const SignUp = () => {
             <button
               id="signup-btn"
               className={`${InputCSS.btn} ${InputCSS.btn_1} josefin-sans-bold`}
+              onClick={login}
             >
               Sign Up
             </button>
