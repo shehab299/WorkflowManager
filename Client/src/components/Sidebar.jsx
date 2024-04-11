@@ -45,8 +45,6 @@ const Sidebar = () => {
     setActiveMenuItem(item);
   };
 
-  const basePath = process.env.NODE_ENV === "production" ? "/build/" : "/src/";
-
   return (
     <SidebarContext.Provider
       value={{ isMenuOpened, toggleMenu, activeMenuItem, setActiveItem }}
@@ -68,7 +66,7 @@ const Sidebar = () => {
           menuItems.map(menuItem => {
             return <SidebarMenuItem
             onClick={() => setActiveItem(menuItem.title)}
-            path={basePath + menuItem.path}
+            path={menuItem.path}
             title={menuItem.title}
           />
           })
