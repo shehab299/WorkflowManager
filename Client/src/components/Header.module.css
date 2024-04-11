@@ -1,7 +1,7 @@
 .header {
   height: 130px;
   width: 100vw;
-  background-color: var(--color-white-50);
+  background-color: var(--color-brand-white);
   padding: 10px 5%;
 }
 

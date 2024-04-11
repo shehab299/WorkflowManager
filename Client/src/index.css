@@ -17,8 +17,13 @@ html {
 }
 
 :root {
-  --color-white-50: #FFFFFF;
-  --color-white-100: #F5F5F5;
+  --color-brand-dim: #FFFFFF;
+  --color-brand-white: #FAFAFF;
+  --color-brand-dim: #EFEFEF;
+  --color-brand-cream: #ECEBE4;
+  --color-brand-grey: #CDCFD1;
+  --color-brand-black: #1C1C1C;
+
   --color-grey: #D2D6DE;
   --color-black: #000000;
   --color-black-opacity-10: rgba(0, 0, 0, 0.1);
