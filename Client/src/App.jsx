@@ -1,29 +1,32 @@
-import React, { StrictMode, useState } from 'react';
+import React, { StrictMode, useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   Navigate,
 } from "react-router-dom";
-
-import SignUp from './pages/SignUp';
-import Login from './pages/Login';
+import { useAuth } from "./utils/AuthContext";
+import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
+import Workflow from "./pages/Workflow";
+import Sidebar from "./components/Sidebar";
+import "./App.css";
 
 function App() {
-  const [isLoggedIn, setLoggedIn] = useState(false);
-
-  const handleLogin = (e) => {
-    setLoggedIn(true);
-  }
+  const { isAuthenticated } = useAuth();
 
   return (
     <Router>
-      {isLoggedIn == true ? (
-        <Routes>
-          <Route path="/dashboard" element={<h1>Welcome</h1>} />
-          <Route path="/*" element={<Navigate to="/dashboard" />} />
-          <Route path="/" element={<Navigate to="/dashboard" />} />
-        </Routes>
+      {isAuthenticated ? (
+        <>
+          <Sidebar />
+          <Routes>
+            <Route path="/workflow" element={<Workflow />} />
+            <Route path="/dashboard" element={<div>Dashboard</div>} />
+            <Route path="/*" element={<Navigate to="/workflow" />} />
+            <Route path="/" element={<Navigate to="/workflow" />} />
+          </Routes>
+        </>
       ) : (
         <Routes>
           <Route path="/login" element={<Login />} />
