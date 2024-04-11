@@ -12,7 +12,7 @@
 
 .btn_1:hover {
   background-color: var(--color-black);
-  color: var(--color-white-50);
+  color: var(--color-brand-white);
 }
 
 .inputBox {
