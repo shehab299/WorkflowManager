@@ -23,8 +23,8 @@ function App() {
           <Routes>
             <Route path="/workflow" element={<Workflow />} />
             <Route path="/dashboard" element={<div>Dashboard</div>} />
-            <Route path="/*" element={<Navigate to="/workflow" />} />
-            <Route path="/" element={<Navigate to="/workflow" />} />
+            <Route path="/*" element={<Navigate to="/dashboard" />} />
+            <Route path="/" element={<Navigate to="/dashboard" />} />
           </Routes>
         </>
       ) : (

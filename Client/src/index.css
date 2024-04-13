@@ -31,11 +31,11 @@ html {
 
   --font-size-extratiny: 10px;
   --font-size-tiny: 12px;
-  --font-size-extrasmall: 14px;
-  --font-size-small: 16px;
-  --font-size-normal: 18px;
+  --font-size-extrasmall: 16px;
+  --font-size-small: 18px;
+  --font-size-regular: 22px;
   --font-size-subtitle: 22px;
-  --font-size-title: 26px;
+  --font-size-title: 30px;
   --font-size-h2: 36px;
   --font-size-h1: 40px;
   --font-size-hero: 48px;
