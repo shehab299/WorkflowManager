@@ -21,18 +21,13 @@ const UserSchema = {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
+    
   },
 
   password: {
     type: DataTypes.STRING,
     allowNull: false,
-  },
-
-  isAdmin: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false
-  }
-  
+  }  
 }
 
 const User = sequelize.define("user", UserSchema);

@@ -1,6 +1,6 @@
 import {Router} from 'express';
-import Workflow from '../models/workflow.js';
-import Stage from '../models/stage.js';
+import Workflow from '../models/Workflow.js';
+import Stage from '../models/Stage.js';
 
 
 const workflowRouter = Router();
