@@ -1,27 +1,21 @@
-import DataTypes from "sequelize";
 import sequelize from "../utils/db.js";
+import DataTypes from "sequelize";
 
-
-const Stage = sequelize.define("Stage", {
+const RoleSchema = {
   id: {
     type: DataTypes.BIGINT,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
   },
-  role: {
+  type: {
     type: DataTypes.STRING,
     allowNull: false,
-  },
-  order: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-});
+  }
+}
 
+const Role = sequelize.define("role", RoleSchema);
 
-export default Stage;
-
-
+export default Role;
 
 

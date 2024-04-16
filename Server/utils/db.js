@@ -8,12 +8,15 @@ const connectionString = "postgres://shehab:WiTb22laFbPY3SnMIwVyjUKFFNX9VbSs@dpg
 
 const sequelize = new Sequelize(connectionString, {
   dialect: "postgres",
+  logging: false,
   dialectOptions: {
     ssl: {
       require: true,
-      rejectUnauthorized: false, // added for self-signed certificates
+      rejectUnauthorized: false// added for self-signed certificates
     },
   },
 });
 
 export default sequelize;
+
+

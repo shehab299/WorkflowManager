@@ -1,20 +1,23 @@
 import DataTypes from "sequelize";
 import sequelize from "../utils/db.js";
 
-const FlowInstanceSchema = { 
 
+const Stage = sequelize.define("Stage", {
   id: {
     type: DataTypes.BIGINT,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
   },
+  order: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+});
 
-}
 
-const FlowInstance = sequelize.define("flow", FlowInstanceSchema);
+export default Stage;
 
 
-export default FlowInstance;
 
 

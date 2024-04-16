@@ -1,7 +1,7 @@
-import { Router } from "express";
-import Workflow from "../models/workflow.js";
-import Stage from "../models/stage.js"
-import FlowInstance from "../models/flow.js";
+import { Router, request } from "express";
+import Workflow from "../models/Workflow.js";
+import Stage from "../models/Stage.js"
+import FlowInstance from "../models/Flow.js";
 
 const router = Router();
 
@@ -9,6 +9,12 @@ router.post('/' , async (req,res) => {
 
     const workflowId = req.body.workflowid;
     const userId = req.body.userid;
+    const initRequest = req.body.request;
+
+
+    if(initRequest){
+        return res.status(400).json({ error : "Missing Initial Request"});
+    }
 
     // Validate workflowId and userId
     if (!workflowId || !userId) {
@@ -36,8 +42,9 @@ router.post('/' , async (req,res) => {
     }
 
     const flowInst = await FlowInstance.create(instanceObj);
+    const request = await Request.create(initRequest);
 
-    console.log(flowInst);
+    console.log(flowInst,request);
 
     res.json({ msg: "Flow instance created" });
 });
