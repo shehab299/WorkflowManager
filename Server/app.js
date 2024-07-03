@@ -1,44 +1,27 @@
-import express  from "express";
-import morgan from "morgan";
-import dotenv from "dotenv";
-import handler404 from "./Middlewares/404.js";
+const express = require("express");
+const {errorHandler, errorLogger, notFoundHandler} = require("./Controllers/errorController");
+const morgan = require("morgan");
 
+const userApp = require("./Routes/userRoutes.js");
+const authApp = require("./Routes/authRoutes.js");
+const workflowApp = require("./Routes/workflowRoutes.js");
 
-dotenv.config({ path: "./config.env" });
-
-import flowRoutes from './routes/flows.js'
-import workflowRoutes from './routes/workflows.js';
-import userRoutes from './routes/user.js'
-import roleRoutes from "./routes/role.js";
-import authMiddleware from "./Middlewares/auth.js";
 
 const app = express();
 
-// Middleware
 app.use(express.json());
-app.use(morgan("dev")); // Development Logger
+
+app.use((req,res,next) => {
+    console.log("Middleware 1");
+    next();
+});
+
+app.use(morgan('dev'))
+
+app.use("/workflows", workflowApp);
+app.use("/auth", authApp);
+app.use("/users",  userApp);
+app.use(notFoundHandler, errorLogger, errorHandler);
 
 
-//Controllers
-import {loginController,signupController} from "./controllers/auth.js"
-
-//Routes
-
-app.post('/signup', signupController);
-app.post('/login', loginController);
-
-
-app.use('/api/v1/flows', authMiddleware , flowRoutes);
-app.use('/api/v1/workflows',authMiddleware ,workflowRoutes);
-app.use('/api/v1/users',authMiddleware ,userRoutes);
-app.use('/api/v1/roles',authMiddleware ,roleRoutes);
-
-
-app.use(handler404); //404 ERROR
-
-
-export default app;
-
-
-
-
+module.exports = app;

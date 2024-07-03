@@ -1,21 +1,37 @@
-import app from "./app.js";
-import db from "./utils/db.js";
-import createDummyUser from "./utils/devUtils.js";
-import defineRelations from "./utils/relations.js";
+require("dotenv").config();
+const { where } = require("sequelize");
+const server = require("./app");
+const sequelize = require("./Config/db");
+const User = require("./Models/UserModel.js");
+require("./Config/relations.js");
 
+async function startServer(){
 
+    await sequelize.authenticate();
+    await sequelize.sync({force: false});
 
-const start = async () => {
-  try {
-    defineRelations()
-    await db.sync({});
-    await createDummyUser(); //dev
-    const PORT = process.env.PORT || 3000;
-    app.listen(PORT);
-    console.log(`Server running on port ${PORT}`);
-  } catch (err) {
-    console.log("Error: " + err);
-  }
+    await User.findOrCreate({
+        where: {
+            email: "shehab299@outlook.com"
+        },
+
+        defaults: {
+            name: "Shehab",
+            email: "shehab299@outlook.com",
+            password: "12345678",
+            role: "admin"
+        }
+    });
+
+    console.log("Database connected successfully!");
+    
+    const port = process.env.PORT || 3000;
+
+    server.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    
+    });
 };
 
-start();
+startServer();
+
