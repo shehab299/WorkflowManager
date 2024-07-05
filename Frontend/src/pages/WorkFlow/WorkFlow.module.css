@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .pageside {
+    width: 80%;
+  }
+
+  .pageside > h1 {
+    margin: 5% 0 2% 0;
+  }
+  
+  .addBtn {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #002853;
+    background-color: #225892;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, border-color 0.3s;
+    
+  }
+  
+  .addBtn:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
