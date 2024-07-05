@@ -1,0 +1,30 @@
+.label {
+  text-transform: capitalize;
+}
+
+.error {
+  color: var(--error-color);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  width: 85%;
+  gap: 6px;
+
+  justify-self: start;
+}
+
+.container input {
+  padding: 0.4rem 0.9rem;
+
+  border-radius: 4px;
+  border: none;
+
+  background-color: var(--inputfield-color);
+}
+
+.container input:focus {
+  outline: 1px solid rgb(235, 235, 235);
+}

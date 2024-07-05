@@ -1,0 +1,25 @@
+.btn {
+  background-color: black;
+  color: white;
+
+  border-radius: 4px;
+  border: none;
+
+  padding: 10px 20px;
+
+  font-family: inherit;
+}
+
+.btn:hover {
+  color: black;
+}
+
+.dark {
+  color: white;
+  background-color: var(--themecolor-secondary);
+}
+
+.light {
+  color: var(--themecolor-secondary);
+  background-color: var(--themecolor-secondary-light);
+}

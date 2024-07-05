@@ -1,0 +1,32 @@
+.form {
+  background-color: rgba(0, 0, 0, 0.062);
+  border-radius: 7px;
+  padding: 2rem 3rem;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  margin: 3rem auto;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form button {
+  align-self: center;
+}
+
+.row input {
+    border-radius: 6px;
+    padding: 0.6rem  1.5rem;
+
+    border: none;
+}
+
+.row input:focus{
+    outline: 1px solid  black;
+}
