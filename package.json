@@ -7,10 +7,13 @@
     "install-server": "cd Server && npm install",
     "start-server": "cd Server && nodemon server.js",
     "install-front-end": "cd Client && npm install",
-    "build-front-end" : "cd Client && npm run build",
+    "build-front-end": "cd Client && npm run build",
     "start-front-end": "cd Client && npm run preview"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^1.0.0-beta.1"
+  }
 }

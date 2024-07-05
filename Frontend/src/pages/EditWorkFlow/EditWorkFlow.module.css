@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .pageside {
+    width: 80%;
+  }
+  
+  .pageside > h1 {
+    margin: 5% 0 2% 0;
+  }
