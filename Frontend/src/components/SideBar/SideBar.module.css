@@ -1,0 +1,41 @@
+.sideBar {
+  border-right: solid 2px rgba(0, 0, 0, 0.041);
+
+  margin: 0 auto;
+  padding: 3rem 0;
+  
+  width: 20%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.sideBar ul {
+  display: flex;
+  flex-direction: column;
+  align-items: first baseline;
+
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.sideBar li {
+  display: flex;
+  align-items: end;
+
+  gap: 1rem;
+
+  
+  padding: 0 1rem;
+}
+
+.sideBar li:hover {
+  cursor: pointer;
+
+  border-radius: 6px;
+
+  color: var(--themecolor-secondary);
+  background: var(--themecolor-secondary-light);
+}

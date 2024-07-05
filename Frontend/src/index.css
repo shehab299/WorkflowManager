@@ -1,0 +1,50 @@
+:root {
+  --error-color: #fc8181;
+  --inputfield-color: #f3f4f6ff;
+  --themecolor-secondary: #00bdd6ff;
+  --themecolor-secondary-light: #c8f9ffff;
+  --font-color: #323842FF;
+}
+
+body {
+  /* font-family: "Josefin Sans", sans-serif; */
+  font-family: "Epilogue", sans-serif;
+  color: var(--font-color);
+}
+
+body > #root > div {
+  height: 100vh;
+}
+
+#root {
+  height: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+input.inputError,
+select.input-error {
+  border: 1px var(--error-color) solid;
+}
+
+::placeholder {
+  opacity: 0.3;
+}

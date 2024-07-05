@@ -1,0 +1,45 @@
+{
+    "status": "success",
+    "data": [
+      {
+        "id": 1,
+        "name": "Shehab",
+        "email": "shehab299@outlook.com",
+        "role": "admin",
+        "createdAt": "2024-07-03T21:28:48.000Z",
+        "updatedAt": "2024-07-03T21:28:48.000Z"
+      },
+      {
+        "id": 2,
+        "name": "Mohamed",
+        "email": "shehab29@outlook.com",
+        "role": "user",
+        "createdAt": "2024-07-03T21:31:00.000Z",
+        "updatedAt": "2024-07-03T21:31:00.000Z"
+      },
+      {
+        "id": 3,
+        "name": "Mohamed",
+        "email": "shehab2@outlook.com",
+        "role": "user",
+        "createdAt": "2024-07-03T21:31:04.000Z",
+        "updatedAt": "2024-07-03T21:31:04.000Z"
+      },
+      {
+        "id": 4,
+        "name": "Mohamed",
+        "email": "shehab@outlook.com",
+        "role": "user",
+        "createdAt": "2024-07-03T21:31:08.000Z",
+        "updatedAt": "2024-07-03T21:31:08.000Z"
+      },
+      {
+        "id": 5,
+        "name": "Mohamed",
+        "email": "sheb@outlook.com",
+        "role": "user",
+        "createdAt": "2024-07-03T21:31:11.000Z",
+        "updatedAt": "2024-07-03T21:31:11.000Z"
+      }
+    ]
+  }

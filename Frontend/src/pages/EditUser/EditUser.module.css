@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  gap: 2rem;
+}
+
+.editSide {
+  width: 80%;
+}
+
+.editSide > h2 {
+  margin: 5% 0;
+}
