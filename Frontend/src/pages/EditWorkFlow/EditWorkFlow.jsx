@@ -1,6 +1,7 @@
 import SideBar from "../../components/SideBar/SideBar";
 import styles from "./EditWorkFlow.module.css";
 import WorkflowEditForm from "../../components/EditWorkFlowForm/EditworkFlowForm";
+import EditWorkFlowForm from "../../components/EditWorkFlowForm/EditworkFlowForm"
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState,useEffect } from "react";
@@ -41,7 +42,8 @@ export default function EditWorkFlow() {
       <SideBar />
       <div className={styles.pageside}>
         <h1>Edit Workflow</h1>
-        <WorkflowEditForm workflow={workflow}/>
+        {/* <WorkflowEditForm workflow={workflow}/> */}
+        <EditWorkFlowForm workflow={workflow}/>
       </div>
     </div>
   );

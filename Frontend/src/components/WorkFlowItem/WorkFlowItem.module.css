@@ -12,8 +12,8 @@
   }
   
   .container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* transform: translateY(-5px); */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   }
   
   .header {
@@ -37,9 +37,25 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-right: 15px;
   }
   
   .btn:hover {
     background-color: #0056b3;
+  }
+
+  .delbtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #b82323;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .delbtn:hover {
+    background-color: #cf0202;
   }
   
