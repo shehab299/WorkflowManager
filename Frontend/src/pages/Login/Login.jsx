@@ -1,39 +1,55 @@
-import React, { useState } from "react";
+import React from "react";
+import { useAuth } from '../../utils/AuthContext';
+import Header from "../../components/Header/Header";
 import styles from "./Login.module.css";
 
-import NavBar from "../../components/NavBar/NavBar";
-import Button from "../../components/Button/Button";
-
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const Login = () => {
+  const { login } = useAuth();
 
   return (
-    <main className={styles.login}>
-      <NavBar />
-      <form className={styles.form}>
-        <div className={styles.row}>
-          <label htmlFor="email">Email address</label>
-          <input
-            type="email"
-            id="email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
+    <div>
+      <Header navigateTo="/signup"/>
+      <main className={styles.body}>
+        <div className={styles.flexContainer_column}>
+          <h2 className={`${styles.title} josefin-sans-bold`}>
+            Welcome Back
+          </h2>
+          <div className={styles.gridContainer}>
+            <div
+              className={`${styles.flexContainer_column} ${styles.gridSection}`}
+            >
+              <label htmlFor="email" className="josefin-sans-bold">
+                Email
+              </label>
+              <input type="email" id="email" className={styles.inputBox} />
+            </div>
+            <div
+              className={`${styles.flexContainer_column} ${styles.gridSection}`}
+            >
+              <label htmlFor="password" className="josefin-sans-bold">
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                className={styles.inputBox}
+              />
+              <span className={`${styles.link} josefin-sans-light`}>Forgot Password?</span>
+            </div>
+          </div>
+          <div className={`${styles.btnSection}`}>
+            <button
+              id="signup-btn"
+              className={`${styles.btn} ${styles.btn_1} josefin-sans-bold`}
+              onClick={login}
+            >
+              Login
+            </button>
+          </div>
         </div>
-
-        <div className={styles.row}>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-          />
-        </div>
-
-        <Button>Login</Button>
-      </form>
-    </main>
+      </main>
+    </div>
   );
-}
+};
+
+export default Login
