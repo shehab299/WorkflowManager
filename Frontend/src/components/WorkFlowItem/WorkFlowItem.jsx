@@ -5,6 +5,7 @@ import DeleteConfirmation from '../DeleteConfirmation/DeleteConfirmation';
 
 export default function WorkFlowItem ({ item }) {
     const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+
     const navigate=useNavigate();
 
     function handleEdit(id) {
@@ -26,6 +27,7 @@ export default function WorkFlowItem ({ item }) {
 
   return (
     <li key={item.id}>
+
     <div className={styles.container}>
         <h2 className={styles.header}>{item.name}</h2>
         <p className={styles.body}>{item.description}</p>

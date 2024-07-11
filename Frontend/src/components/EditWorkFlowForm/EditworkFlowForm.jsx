@@ -3,6 +3,7 @@ import styles from "./EditWorkFlowForm.module.css";
 import { useNavigate } from "react-router-dom";
 import StagesForm from "../StagesForm/StagesForm";
 
+
 const EditWorkFlowForm = ({ workflow }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -54,6 +55,7 @@ const EditWorkFlowForm = ({ workflow }) => {
           <label htmlFor="stages" className={styles.label}>
             Stages
           </label>
+
           <StagesForm stages={stages} setStages={setStages}/>
         </div>
         <button type="submit" className={styles.submitButton}>

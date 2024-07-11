@@ -3,6 +3,7 @@ import styles from "./WorkFlow.module.css";
 import { useNavigate } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 
+
 import SideBar from "../../components/SideBar/SideBar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import WorkFlowList from "../../components/WorkFlowList/WorkFlowList";
@@ -14,7 +15,7 @@ export default function WorkFlow() {
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
-  //fetching workflows
+
   useEffect(() => {
     const controller = new AbortController();
     async function fetchWorkflows() {
@@ -47,6 +48,7 @@ export default function WorkFlow() {
       workflow.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       workflow.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
 
   //navigating
   const handleAddWorkflow = () => {
