@@ -46,7 +46,14 @@
     {
       "id": 1,
       "name": "User Onboarding Workflow",
-      "description": "This workflow guides new users through the onboarding process, ensuring they complete all necessary steps to get started with the platform. It includes account setup, profile customization, initial training modules, and a welcome tour of key features. The goal is to provide a smooth and informative introduction to new users, enhancing their initial experience and helping them quickly become proficient with the platform."
+      "description": "This workflow guides new users through the onboarding process, ensuring they complete all necessary steps to get started with the platform. It includes account setup, profile customization, initial training modules, and a welcome tour of key features. The goal is to provide a smooth and informative introduction to new users, enhancing their initial experience and helping them quickly become proficient with the platform.",
+      "stages":[
+        {
+          "id":"stage-1",
+          "role":"user",
+          "name":"ID Scan"
+        }
+      ]
     },
     {
       "id": 2,
@@ -55,6 +62,51 @@
     },
     {
       "id": 3,
+      "name": "Project Management Workflow",
+      "description": "This comprehensive workflow supports end-to-end project management, from initial planning through execution to final delivery. It includes phases such as project initiation, scope definition, task assignment, timeline creation, progress tracking, and post-project evaluation. Each phase is equipped with tools and templates for effective management, such as Gantt charts, task lists, risk assessment matrices, and performance metrics. The workflow is designed to enhance collaboration, ensure resource optimization, and deliver projects on time and within budget."
+    },
+    {
+      "id": 4,
+      "name": "User Onboarding Workflow",
+      "description": "This workflow guides new users through the onboarding process, ensuring they complete all necessary steps to get started with the platform. It includes account setup, profile customization, initial training modules, and a welcome tour of key features. The goal is to provide a smooth and informative introduction to new users, enhancing their initial experience and helping them quickly become proficient with the platform."
+    },
+    {
+      "id": 5,
+      "name": "Content Approval Workflow",
+      "description": "Designed for teams managing large volumes of content, this workflow streamlines the process of content creation, review, and approval. It involves multiple stages, including draft creation, peer review, editorial oversight, and final approval. Each stage includes detailed guidelines and checklists to ensure content meets quality standards and aligns with organizational goals. Automated notifications keep all stakeholders informed of progress and deadlines, reducing bottlenecks and ensuring timely publication."
+    },
+    {
+      "id": 6,
+      "name": "Project Management Workflow",
+      "description": "This comprehensive workflow supports end-to-end project management, from initial planning through execution to final delivery. It includes phases such as project initiation, scope definition, task assignment, timeline creation, progress tracking, and post-project evaluation. Each phase is equipped with tools and templates for effective management, such as Gantt charts, task lists, risk assessment matrices, and performance metrics. The workflow is designed to enhance collaboration, ensure resource optimization, and deliver projects on time and within budget."
+    },
+    {
+      "id": 7,
+      "name": "User Onboarding Workflow",
+      "description": "This workflow guides new users through the onboarding process, ensuring they complete all necessary steps to get started with the platform. It includes account setup, profile customization, initial training modules, and a welcome tour of key features. The goal is to provide a smooth and informative introduction to new users, enhancing their initial experience and helping them quickly become proficient with the platform."
+    },
+    {
+      "id": 8,
+      "name": "Content Approval Workflow",
+      "description": "Designed for teams managing large volumes of content, this workflow streamlines the process of content creation, review, and approval. It involves multiple stages, including draft creation, peer review, editorial oversight, and final approval. Each stage includes detailed guidelines and checklists to ensure content meets quality standards and aligns with organizational goals. Automated notifications keep all stakeholders informed of progress and deadlines, reducing bottlenecks and ensuring timely publication."
+    },
+    {
+      "id": 9,
+      "name": "Project Management Workflow",
+      "description": "This comprehensive workflow supports end-to-end project management, from initial planning through execution to final delivery. It includes phases such as project initiation, scope definition, task assignment, timeline creation, progress tracking, and post-project evaluation. Each phase is equipped with tools and templates for effective management, such as Gantt charts, task lists, risk assessment matrices, and performance metrics. The workflow is designed to enhance collaboration, ensure resource optimization, and deliver projects on time and within budget."
+    },
+    {
+      "id": 10,
+      "name": "User Onboarding Workflow",
+      "description": "This workflow guides new users through the onboarding process, ensuring they complete all necessary steps to get started with the platform. It includes account setup, profile customization, initial training modules, and a welcome tour of key features. The goal is to provide a smooth and informative introduction to new users, enhancing their initial experience and helping them quickly become proficient with the platform."
+    },
+    {
+      "id": 11,
+      "name": "Content Approval Workflow",
+      "description": "Designed for teams managing large volumes of content, this workflow streamlines the process of content creation, review, and approval. It involves multiple stages, including draft creation, peer review, editorial oversight, and final approval. Each stage includes detailed guidelines and checklists to ensure content meets quality standards and aligns with organizational goals. Automated notifications keep all stakeholders informed of progress and deadlines, reducing bottlenecks and ensuring timely publication."
+    },
+    {
+      "id": 12,
       "name": "Project Management Workflow",
       "description": "This comprehensive workflow supports end-to-end project management, from initial planning through execution to final delivery. It includes phases such as project initiation, scope definition, task assignment, timeline creation, progress tracking, and post-project evaluation. Each phase is equipped with tools and templates for effective management, such as Gantt charts, task lists, risk assessment matrices, and performance metrics. The workflow is designed to enhance collaboration, ensure resource optimization, and deliver projects on time and within budget."
     }
