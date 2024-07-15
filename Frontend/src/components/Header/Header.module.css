@@ -1,0 +1,33 @@
+.header {
+  height: 130px;
+  width: 100vw;
+  background-color: var(--color-brand-white);
+  padding: 10px 5%;
+}
+
+.gridContainer {
+  max-width: 100%; /* Ensures container does not exceed the width of its parent */
+  max-height: 100%; /* Ensures container does not exceed the height of its parent */
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: column;
+  justify-items: flex-end;
+  align-items: center;
+}
+
+.logo {
+  max-height: 100%;
+  height: 100px;
+  justify-self: flex-start;
+}
+
+.logo img {
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.headerTitle {
+  font-size: 24px;
+  justify-self: center;
+}

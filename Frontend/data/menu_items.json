@@ -1,0 +1,14 @@
+[
+  {
+    "title": "dashboard",
+    "path": "../public/dashboard.png"
+  },
+  {
+    "title": "users",
+    "path": "../public//users.png"
+  },
+  {
+    "title": "workflow",
+    "path": "../public//workflow.png"
+  }
+]

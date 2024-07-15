@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from "./WorkFlow.module.css";
 import { useNavigate } from "react-router-dom";
 import ReactPaginate from "react-paginate";
-
-
 import SideBar from "../../components/SideBar/SideBar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import WorkFlowList from "../../components/WorkFlowList/WorkFlowList";
