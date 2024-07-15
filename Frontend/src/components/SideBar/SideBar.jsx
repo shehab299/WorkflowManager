@@ -3,7 +3,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../utils/AuthContext";
 import menuItems from "../../../data/menu_items.json";
 import SidebarMenuItem from "./SidebarMenuItem";
-import SidebarCSS from "./Sidebar.module.css";
+
+import styles from './SideBar.module.css'
 import moreIcon from "../../assets/icons/more.png";
 import logoutIcon from "../../assets/icons/log-out.png";
 
@@ -46,18 +47,18 @@ const SideBar = () => {
       value={{ isMenuOpened, toggleMenu, activeMenuItem, setActiveItem }}
     >
       <div
-        className={`${SidebarCSS.sidebar} ${
-          isMenuOpened ? SidebarCSS.open : ""
+        className={`${styles.sidebar} ${
+          isMenuOpened ? styles.open : ""
         }`}
       >
-        <div className={SidebarCSS.more_icon}>
+        <div className={styles.more_icon}>
           <SidebarMenuItem
             onClick={toggleMenu}
             path={moreIcon}
             title={"Cairo University"}
           />
         </div>
-        <div className={SidebarCSS.menu_items}>
+        <div className={styles.menu_items}>
           {menuItems.map((menuItem) => (
             <SidebarMenuItem
               key={menuItem.title}
@@ -67,7 +68,7 @@ const SideBar = () => {
             />
           ))}
         </div>
-        <div className={SidebarCSS.logout}>
+        <div className={styles.logout}>
           <SidebarMenuItem
             onClick={logout}
             path={logoutIcon}
