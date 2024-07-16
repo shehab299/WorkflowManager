@@ -237,3 +237,12 @@ html {
     resize: none;
   }
   
+  .error {
+  background-color: #fcd6d6;
+  padding: 10px;
+
+  border: 2.6px solid #ff7777;
+  border-radius: 6px;
+
+  color: #e45555;
+}

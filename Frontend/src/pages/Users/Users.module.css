@@ -2,3 +2,26 @@
   display: flex;
   gap: 2rem;
 }
+
+.usersSide {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+
+  gap: 4%;
+  margin: 2% 5% 0 0;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+
+  gap: 2rem;
+}
+
+.results {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

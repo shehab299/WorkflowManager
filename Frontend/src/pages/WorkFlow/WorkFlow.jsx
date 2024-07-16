@@ -10,33 +10,52 @@ const BASE_URL = "http://localhost:3000";
 
 export default function WorkFlow() {
   const [workflows, setWorkflows] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   const controller = new AbortController();
+  //   async function fetchWorkflows() {
+  //     try {
+  //       const user = JSON.parse(localStorage.getItem("user"));
+  //       const token = user?.token;
+  //       console.log(token);
+  //       if (!token) {
+  //         throw new Error("No token found");
+  //       }
 
-  useEffect(() => {
-    const controller = new AbortController();
-    async function fetchWorkflows() {
-      try {
-        setIsLoading(true);
-        const res = await fetch(`${BASE_URL}/workflows`, {
-          signal: controller.signal,
-        });
-        const data = await res.json();
-        setWorkflows(data);
-      } catch (error) {
-        if (error.name === "AbortError") return;
-      } finally {
-        setIsLoading(false);
-      }
-    }
+  //       setIsLoading(true);
+  //       const res = await fetch(`${BASE_URL}/workflows`, {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //         signal: controller.signal,
+  //       });
 
-    fetchWorkflows();
+  //       if (!res.ok) {
+  //         throw new Error("Failed to fetch workflows");
+  //       }
 
-    return () => {
-      controller.abort();
-    };
-  }, []);
+  //       const data = await res.json();
+  //       console.log(data); // {status: 'success', data: Array(0)}
+  //       setWorkflows(data.data); // Set workflows to data.data, which should be an array
+  //     } catch (error) {
+  //       if (error.name === "AbortError") return;
+  //       console.error("Fetch Error:", error.message);
+  //       // setError(error.message);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   }
+
+  //   fetchWorkflows();
+
+  //   return () => {
+  //     controller.abort();
+  //   };
+  // }, []);
 
   //search bar
   const [searchQuery, setSearchQuery] = useState("");
@@ -47,7 +66,6 @@ export default function WorkFlow() {
       workflow.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-
   //navigating
   const handleAddWorkflow = () => {
     navigate("/addworkflow");
@@ -55,12 +73,12 @@ export default function WorkFlow() {
 
   //pagination
   const [currentPage, setCurrentPage] = useState(() => {
-    const savedPage = localStorage.getItem('currentPage');
+    const savedPage = localStorage.getItem("currentPage");
     return savedPage !== null ? parseInt(savedPage, 10) : 0;
   });
 
   useEffect(() => {
-    localStorage.setItem('currentPage', currentPage);
+    localStorage.setItem("currentPage", currentPage);
   }, [currentPage]);
 
   const itemsPerPage = 5;
@@ -84,26 +102,28 @@ export default function WorkFlow() {
         </button>
 
         {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <>
-          <WorkFlowList items={currentItems} />
-          <ReactPaginate
-            previousLabel={'previous'}
-            nextLabel={'next'}
-            breakLabel={'...'}
-            breakClassName={'break-me'}
-            pageCount={Math.ceil(items.length / itemsPerPage)}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
-            onPageChange={handlePageClick}
-            containerClassName={styles.pagination}
-            subContainerClassName={`${styles.pages} ${styles.pagination}`}
-            activeClassName={styles.active}
-            forcePage={currentPage}
-          />
-        </>
-      )}
+          <p>Loading...</p>
+        ) : (
+          <>
+            <WorkFlowList items={currentItems} />
+            {items.length > 0 && (
+              <ReactPaginate
+                previousLabel={"previous"}
+                nextLabel={"next"}
+                breakLabel={"..."}
+                breakClassName={"break-me"}
+                pageCount={Math.ceil(items.length / itemsPerPage)}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={5}
+                onPageChange={handlePageClick}
+                containerClassName={styles.pagination}
+                subContainerClassName={`${styles.pages} ${styles.pagination}`}
+                activeClassName={styles.active}
+                forcePage={currentPage}
+              />
+            )}
+          </>
+        )}
       </div>
     </div>
   );
