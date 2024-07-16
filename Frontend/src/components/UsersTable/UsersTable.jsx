@@ -4,11 +4,13 @@ import TableBody from "./TableBody";
 
 import styles from "./UsersTable.module.css";
 
-export default function UsersTable({ users }) {
+export default function UsersTable() {
   return (
-    <table className={styles.container}>
-      <TableHead users={users} />
-      <TableBody users={users} />
-    </table>
+    <div className={styles.container}>
+      <table className={styles.table}>
+        <TableHead />
+        <TableBody />
+      </table>
+    </div>
   );
 }

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 body,
 html {
@@ -17,14 +17,14 @@ html {
 }
 
 :root {
-  --color-brand-dim: #FFFFFF;
-  --color-brand-white: #FAFAFF;
-  --color-brand-dim: #EFEFEF;
-  --color-brand-cream: #ECEBE4;
-  --color-brand-grey: #CDCFD1;
-  --color-brand-black: #1C1C1C;
+  --color-brand-dim: #ffffff;
+  --color-brand-white: #fafaff;
+  --color-brand-dim: #efefef;
+  --color-brand-cream: #ecebe4;
+  --color-brand-grey: #cdcfd1;
+  --color-brand-black: #1c1c1c;
 
-  --color-grey: #D2D6DE;
+  --color-grey: #d2d6de;
   --color-black: #000000;
   --color-black-opacity-10: rgba(0, 0, 0, 0.1);
   --color-black-opacity-5: rgba(0, 0, 0, 0.05);
@@ -235,4 +235,14 @@ html {
   padding: 0.6rem 0.8rem;
   font-size: var(--font-size-regular);
   resize: none;
+}
+
+.error {
+  background-color: #fcd6d6;
+  padding: 10px;
+
+  border: 2.6px solid #ff7777;
+  border-radius: 6px;
+
+  color: #e45555;
 }

@@ -1,25 +1,24 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useAuth } from "../../utils/AuthContext";
 import menuItems from "../../../data/menu_items.json";
 import SidebarMenuItem from "./SidebarMenuItem";
 
-import styles from './SideBar.module.css'
+import styles from "./SideBar.module.css";
 import moreIcon from "../../assets/icons/more.png";
 import logoutIcon from "../../assets/icons/log-out.png";
+import useLogout from "../../hooks/useLogout";
 
-// Create a context
 const SidebarContext = createContext();
 
 const SideBar = () => {
+  const { logout } = useLogout();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [isMenuOpened, setIsMenuOpened] = useState(
     () => localStorage.getItem("isMenuOpened") === "true"
   );
   const [activeMenuItem, setActiveMenuItem] = useState(null);
-
-  const { logout } = useAuth();
-  const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     localStorage.setItem("isMenuOpened", isMenuOpened);
@@ -46,11 +45,7 @@ const SideBar = () => {
     <SidebarContext.Provider
       value={{ isMenuOpened, toggleMenu, activeMenuItem, setActiveItem }}
     >
-      <div
-        className={`${styles.sidebar} ${
-          isMenuOpened ? styles.open : ""
-        }`}
-      >
+      <div className={`${styles.sidebar} ${isMenuOpened ? styles.open : ""}`}>
         <div className={styles.more_icon}>
           <SidebarMenuItem
             onClick={toggleMenu}
@@ -80,7 +75,6 @@ const SideBar = () => {
   );
 };
 
-// Custom hook to use the SidebarContext
 export const useMenuContext = () => {
   return useContext(SidebarContext);
 };

@@ -1,14 +1,14 @@
 [
   {
     "title": "dashboard",
-    "path": "../public/dashboard.png"
+    "path": "/dashboard.png"
   },
   {
     "title": "users",
-    "path": "../public//users.png"
+    "path": "/users.png"
   },
   {
     "title": "workflow",
-    "path": "../public//workflow.png"
+    "path": "/workflow.png"
   }
 ]

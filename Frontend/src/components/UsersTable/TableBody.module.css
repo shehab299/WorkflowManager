@@ -1,0 +1,14 @@
+.icon {
+    opacity: 0.4;
+    /* padding: 0.6rem; */
+}
+
+.icon:hover {
+    /* padding: 7px; */
+    /* opacity: 1; */
+    /* color: black !important; */
+    background: rgba(0, 0, 0, 0.13);
+    border-radius: 50%;
+
+    cursor: pointer;
+}
