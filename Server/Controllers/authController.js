@@ -30,7 +30,8 @@ async function login(req, res, next){
         return next(new AppError(401, "Invalid Username or Password"));
     };
 
-    const token = await promisify(jwt.sign)({id: user.id}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRES_IN});
+    user.password = null;
+    const token = await promisify(jwt.sign)({user}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRES_IN});
 
     res.status(200).json({
         status: "success",
