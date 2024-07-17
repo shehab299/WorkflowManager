@@ -13,49 +13,42 @@ export default function WorkFlow() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const controller = new AbortController();
-  //   async function fetchWorkflows() {
-  //     try {
-  //       const user = JSON.parse(localStorage.getItem("user"));
-  //       const token = user?.token;
-  //       console.log(token);
-  //       if (!token) {
-  //         throw new Error("No token found");
-  //       }
+  useEffect(() => {
+    const controller = new AbortController();
+    setIsLoading(true);
+    async function fetchWorkflows() {
+      try {
+        const token = localStorage.getItem("token");
+        const res = await fetch(`${BASE_URL}/workflows`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          signal: controller.signal,
+        });
 
-  //       setIsLoading(true);
-  //       const res = await fetch(`${BASE_URL}/workflows`, {
-  //         method: "GET",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //         signal: controller.signal,
-  //       });
+        if (!res.ok) {
+          throw new Error("Failed to fetch workflows");
+        }
 
-  //       if (!res.ok) {
-  //         throw new Error("Failed to fetch workflows");
-  //       }
+        const data = await res.json();
+        setWorkflows(data.data);
+      } catch (error) {
+        if (error.name === "AbortError") return;
+        console.error("Fetch Error:", error.message);
+        // setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    }
 
-  //       const data = await res.json();
-  //       console.log(data); // {status: 'success', data: Array(0)}
-  //       setWorkflows(data.data); // Set workflows to data.data, which should be an array
-  //     } catch (error) {
-  //       if (error.name === "AbortError") return;
-  //       console.error("Fetch Error:", error.message);
-  //       // setError(error.message);
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   }
+    fetchWorkflows();
 
-  //   fetchWorkflows();
-
-  //   return () => {
-  //     controller.abort();
-  //   };
-  // }, []);
+    return () => {
+      controller.abort();
+    };
+  }, []);
 
   //search bar
   const [searchQuery, setSearchQuery] = useState("");

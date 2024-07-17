@@ -19,6 +19,10 @@
   background-color: var(--themecolor-secondary);
 }
 
+.dark:hover {
+  color: white;
+}
+
 .light {
   color: var(--themecolor-secondary);
   background-color: var(--themecolor-secondary-light);

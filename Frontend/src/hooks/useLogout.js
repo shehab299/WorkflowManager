@@ -1,11 +1,12 @@
 import { useAuth } from "../contexts/AuthContext";
 
 function useLogout() {
-  const { setIsAuthenticated } = useAuth();
+  const { dispatch } = useAuth();
 
   function logout() {
-    console.log("logout");
-    setIsAuthenticated(false);
+    dispatch({ type: "logout" });
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
   }
 
   return { logout };

@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
+import { jwtDecode } from "jwt-decode";
 
 function useLogin() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { setIsAuthenticated } = useAuth();
+  const { dispatch } = useAuth();
 
   async function login({ email, password }) {
     setIsLoading(true);
@@ -17,14 +18,21 @@ function useLogin() {
     });
     const data = await res.json();
 
-    console.log(data);
-
     if (!res.ok) {
       setError(data.message);
       setIsLoading(false);
     } else {
-      localStorage.setItem("user", JSON.stringify(data));
-      setIsAuthenticated(true);
+      const token = data.token;
+
+      const user = jwtDecode(token).user;
+      console.log(user);
+
+      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("token", token);
+
+      console.log(localStorage);
+
+      dispatch({ type: "login", payload: user });
     }
   }
 

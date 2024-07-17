@@ -10,15 +10,22 @@ import EditWorkFlow from "./pages/EditWorkFlow/EditWorkFlow";
 
 import { useAuth } from "./contexts/AuthContext";
 import { UsersProvider } from "./contexts/UsersContext";
+import NormalUser from "./pages/NormalUser";
 
 function App() {
-  const { isAuthenticated } = useAuth();
+  const { user } = useAuth();
 
   return (
     <BrowserRouter>
-      <UsersProvider>
-        {isAuthenticated ? (
-          <>
+      {user ? (
+        user.role !== "admin" ? (
+          <Routes>
+            <Route path={`/${user.id}`} element={<NormalUser />} />
+            <Route path="*" element={<Navigate to={`/${user.id}`} />} />
+            <Route path="/" element={<Navigate to={`/${user.id}`} />} />
+          </Routes>
+        ) : (
+          <UsersProvider>
             <Routes>
               <Route path="/dashboard" element={<div>Dashboard</div>} />
               <Route path="/*" element={<Navigate to="/workflow" />} />
@@ -30,16 +37,16 @@ function App() {
               <Route path="addworkflow" element={<AddWorkFlow />} />
               <Route path="editworkflow/:id" element={<EditWorkFlow />} />
             </Routes>
-          </>
-        ) : (
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/*" element={<Navigate to="/signup" />} />
-            <Route path="/" element={<Navigate to="/signup" />} />
-          </Routes>
-        )}
-      </UsersProvider>
+          </UsersProvider>
+        )
+      ) : (
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/*" element={<Navigate to="/signup" />} />
+          <Route path="/" element={<Navigate to="/signup" />} />
+        </Routes>
+      )}
     </BrowserRouter>
   );
 }

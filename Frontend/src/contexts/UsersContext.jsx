@@ -30,54 +30,54 @@ function UsersProvider({ children }) {
     setFilteredData(filtered);
   }
 
-  // useEffect(() => {
-  //   const controller = new AbortController();
-  //   const fetchUsers = async () => {
-  //     // setIsLoading(true);
-  //     // setError("");
+  useEffect(() => {
+    const controller = new AbortController();
+    const fetchUsers = async () => {
+      // setIsLoading(true);
+      // setError("");
 
-  //     try {
-  //       const user = JSON.parse(localStorage.getItem("user"));
-  //       const token = user?.token;
-  //       console.log(token);
-  //       if (!token) {
-  //         throw new Error("No token found");
-  //       }
+      try {
+        const token = localStorage.getItem("token");
+        console.log(token);
+  
+        if (!token) {
+          throw new Error("No token found");
+        }
 
-  //       const res = await fetch(
-  //         `${BASE_URL}/users`,
-  //         {
-  //           method: "GET",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //             Authorization: `Bearer ${token}`,
-  //           },
-  //         },
-  //         {
-  //           signal: controller.signal,
-  //         }
-  //       );
+        const res = await fetch(
+          `${BASE_URL}/users`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          },
+          {
+            signal: controller.signal,
+          }
+        );
+        const data = await res.json();
 
-  //       if (!res.ok) {
-  //         throw new Error("Failed to fetch users");
-  //       }
+        if (!res.ok) {
+          throw new Error("Failed to fetch users");
+        }
 
-  //       const data = await res.json();
-  //       console.log(data.data);
-  //       setUsers(data.data);
-  //       setFilteredData(data.data);
-  //     } catch (error) {
-  //       // setError(error.message);
-  //     } finally {
-  //       // setIsLoading(false);
-  //     }
-  //   };
+        console.log(data.data);
+        setUsers(data.data);
+        setFilteredData(data.data);
+      } catch (error) {
+        // setError(error.message);
+      } finally {
+        // setIsLoading(false);
+      }
+    };
 
-  //   fetchUsers();
-  //   return () => {
-  //     controller.abort();
-  //   };
-  // }, []);
+    fetchUsers();
+    return () => {
+      controller.abort();
+    };
+  }, []);
 
   return (
     <UsersContext.Provider

@@ -1,18 +1,26 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useReducer } from "react";
 
 const AuthContext = createContext();
 
+const initialState = {
+  user: JSON.parse(localStorage.getItem("user")),
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "login":
+      return { ...state, user: action.payload };
+    case "logout":
+      return { ...state, user: null };
+    default:
+      throw new Error("unknown action");
+  }
+}
+
 export function AuthProvider({ children }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    () => localStorage.getItem("isAuthenticated") === "true"
-  );
-
-  useEffect(() => {
-    localStorage.setItem("isAuthenticated", isAuthenticated);
-  }, [isAuthenticated]);
-
+  const [{ user }, dispatch] = useReducer(reducer, initialState);
   return (
-    <AuthContext.Provider value={{ setIsAuthenticated, isAuthenticated }}>
+    <AuthContext.Provider value={{ user, dispatch }}>
       {children}
     </AuthContext.Provider>
   );
