@@ -5,10 +5,7 @@ const EditUserSchema = yup.object().shape({
   username: yup.string(),
   department: yup.string(),
   role: yup.string(),
-  email: yup
-    .string()
-    .email("Please enter a valid email")
-,
+  email: yup.string().email("Please enter a valid email"),
   phone: yup.string(),
 });
 
