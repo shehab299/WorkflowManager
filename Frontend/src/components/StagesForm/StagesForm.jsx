@@ -24,9 +24,10 @@ export default function StagesForm({ stages,setStages }) {
         setStages([
           ...stages,
           {
-            id: `stage-${stages.length + 1}`,
+            id: stages.length + 1,
             name: stageName,
             role: selectedRole,
+            // order: stages.length + 1,
           },
         ]);
         setStageName("");
@@ -63,15 +64,15 @@ export default function StagesForm({ stages,setStages }) {
   const validate = () => {
     const newErrors = {};
     if (!stageName.trim()) newErrors.title = "Stage name is required";
-    if (stageName.length > 70)
-      newErrors.title = "Stage name must be less than 70 characters";
+    if (stageName.length > 50)
+      newErrors.title = "Stage name must be less than 50 characters";
     return newErrors;
   };
   const editValidate = () => {
     const newErrors = {};
     if (!stageEditedName.trim()) newErrors.edit = "Required field";
-    if (stageEditedName.length > 70)
-      newErrors.edit = "Stage name must be less than 70 characters";
+    if (stageEditedName.length > 50)
+      newErrors.edit = "Stage name must be less than 50 characters";
     return newErrors;
   };
   const handleEditStage = (stage) => {
@@ -155,6 +156,7 @@ export default function StagesForm({ stages,setStages }) {
       </Reorder.Group>
 
       <div className={styles.addStage}>
+        <div className={styles.subcontainer}>
         <input
           type="text"
           placeholder="Enter stage name"
@@ -162,6 +164,10 @@ export default function StagesForm({ stages,setStages }) {
           onChange={(e) => setStageName(e.target.value)}
           onKeyDown={handleKeyDown}
         />
+        <button type="button" onClick={handleAddStage} ref={addStageButtonRef}>
+          Add Stage
+        </button>
+        </div>
         {errors.title && <p className={styles.error}>{errors.title}</p>}
 
         <label htmlFor="roles" className={styles.label}>
@@ -193,9 +199,7 @@ export default function StagesForm({ stages,setStages }) {
             </label>
           </div>
         </div>
-        <button type="button" onClick={handleAddStage} ref={addStageButtonRef}>
-          Add Stage
-        </button>
+        
       </div>
     </div>
   );

@@ -3,6 +3,11 @@
     flex-direction: column;
     gap: 10px;
   }
+
+  .subcontainer{
+    display: flex;
+    flex-direction: row;
+  }
   
   .stage {
     display: flex;
@@ -23,7 +28,8 @@
   }
 
   .stagename{
-    width: 60%;
+    width: 50%;
+    /* overflow: scroll; */
   }
   
   .removeStageButton {
@@ -48,17 +54,26 @@
   }
   
   .addStage button {
-    padding: 10px 15px;
-    background-color: #007bff;
+    width: 120px;
+    height: 40px;
+    margin-left: 5px;
+    font-size: 16px;
     color: white;
+    background-color: #22923c;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
   }
   
-  .addStage button:hover {
+  
+  .subcontainer button:hover {
     background-color: #0056b3;
+  }
+  
+  
+  .addStage button:hover {
+    background-color: #39b355;
   }
 
   .input,
@@ -69,7 +84,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-    margin-top: 5px;
+    /* margin-top: 5px; */
     transition: border-color 0.3s, box-shadow 0.3s;
   }
   
@@ -144,3 +159,5 @@
   .saveButton:hover {
     background-color: #45a049;
   }
+
+  

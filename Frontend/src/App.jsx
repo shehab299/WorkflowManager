@@ -10,6 +10,7 @@ import EditWorkFlow from "./pages/EditWorkFlow/EditWorkFlow";
 
 import { useAuth } from "./contexts/AuthContext";
 import { UsersProvider } from "./contexts/UsersContext";
+import { WorkflowsProvider } from "./contexts/WorkflowsContext";
 import NormalUser from "./pages/NormalUser";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           </Routes>
         ) : (
           <UsersProvider>
+          <WorkflowsProvider>
             <Routes>
               <Route path="/dashboard" element={<div>Dashboard</div>} />
               <Route path="/*" element={<Navigate to="/workflow" />} />
@@ -37,6 +39,7 @@ function App() {
               <Route path="addworkflow" element={<AddWorkFlow />} />
               <Route path="editworkflow/:id" element={<EditWorkFlow />} />
             </Routes>
+          </WorkflowsProvider>
           </UsersProvider>
         )
       ) : (

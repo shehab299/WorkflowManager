@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import styles from "./WorkFlowItem.module.css"
 import { useNavigate } from 'react-router-dom';
 import DeleteConfirmation from '../DeleteConfirmation/DeleteConfirmation';
+import { useWorkflows } from '../../contexts/WorkflowsContext';
 
 export default function WorkFlowItem ({ item }) {
     const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+    const {deleteWorkflow} = useWorkflows();
 
     const navigate=useNavigate();
 
@@ -16,8 +18,9 @@ export default function WorkFlowItem ({ item }) {
       setShowDeleteConfirmation(true);
     }
   
-    function confirmDelete() {
+    const confirmDelete = async() => {
       setShowDeleteConfirmation(false);
+      await deleteWorkflow(item.id);
       console.log(`Deleted item with id: ${item.id}`);
     }
   
@@ -29,15 +32,15 @@ export default function WorkFlowItem ({ item }) {
     <li key={item.id}>
 
     <div className={styles.container}>
-        <h2 className={styles.header}>{item.name}</h2>
+        <h2 className={styles.header}>{item.title}</h2>
         <p className={styles.body}>{item.description}</p>
-        <button className={styles.btn} onClick={()=>handleEdit(item.id)}>Edit</button>
+        {/* <button className={styles.btn} onClick={()=>handleEdit(item.id)}>Edit</button> */}
         <button className={styles.delbtn} onClick={()=>handleDelete(item.id)}>Delete</button>
         <DeleteConfirmation
         show={showDeleteConfirmation}
         onClose={closeDeleteConfirmation}
         onConfirm={confirmDelete}
-        name={item.name}
+        name={item.title}
       />
     </div>
     </li>
