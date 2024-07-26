@@ -3,59 +3,23 @@ import styles from "./WorkFlow.module.css";
 import { useNavigate } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import SideBar from "../../components/SideBar/SideBar";
-import SearchBar from "../../components/SearchBar/SearchBar";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import WorkFlowList from "../../components/WorkFlowList/WorkFlowList";
+import { useWorkflows } from "../../contexts/WorkflowsContext";
 
 const BASE_URL = "http://localhost:3000";
 
 export default function WorkFlow() {
-  const [workflows, setWorkflows] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [workflows, setWorkflows] = useState([]);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const controller = new AbortController();
-    setIsLoading(true);
-    async function fetchWorkflows() {
-      try {
-        const token = localStorage.getItem("token");
-        const res = await fetch(`${BASE_URL}/workflows`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          signal: controller.signal,
-        });
-
-        if (!res.ok) {
-          throw new Error("Failed to fetch workflows");
-        }
-
-        const data = await res.json();
-        setWorkflows(data.data);
-      } catch (error) {
-        if (error.name === "AbortError") return;
-        console.error("Fetch Error:", error.message);
-        // setError(error.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    fetchWorkflows();
-
-    return () => {
-      controller.abort();
-    };
-  }, []);
+  const { filteredData } = useWorkflows();
 
   //search bar
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredWorkflows = workflows.filter(
+  const filteredWorkflows = filteredData.filter(
     (workflow) =>
-      workflow.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      workflow.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       workflow.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -74,7 +38,7 @@ export default function WorkFlow() {
     localStorage.setItem("currentPage", currentPage);
   }, [currentPage]);
 
-  const itemsPerPage = 5;
+  const itemsPerPage = 3;
   const items = filteredWorkflows;
 
   const handlePageClick = (data) => {
@@ -89,34 +53,42 @@ export default function WorkFlow() {
       <SideBar />
       <div className={styles.pageside}>
         <h1 className={styles.header}>Workflows</h1>
-        <SearchBar value={searchQuery} onChange={setSearchQuery} />
-        <button className={styles.addBtn} onClick={handleAddWorkflow}>
-          Add New Workflow
-        </button>
+        <div className={styles.headerSide}>
+          {/* <SearchBar value={searchQuery} onChange={setSearchQuery} /> */}
+          <div className={styles.searchbarContainer}>
+            <SearchOutlinedIcon className={styles.icon} />
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className={styles.searchBar}
+            />
+          </div>
+          <button className={styles.addBtn} onClick={handleAddWorkflow}>
+            Add New Workflow
+          </button>
+        </div>
 
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <>
-            <WorkFlowList items={currentItems} />
-            {items.length > 0 && (
-              <ReactPaginate
-                previousLabel={"previous"}
-                nextLabel={"next"}
-                breakLabel={"..."}
-                breakClassName={"break-me"}
-                pageCount={Math.ceil(items.length / itemsPerPage)}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={5}
-                onPageChange={handlePageClick}
-                containerClassName={styles.pagination}
-                subContainerClassName={`${styles.pages} ${styles.pagination}`}
-                activeClassName={styles.active}
-                forcePage={currentPage}
-              />
-            )}
-          </>
-        )}
+        <>
+          <WorkFlowList items={currentItems} />
+          {items.length > 0 && (
+            <ReactPaginate
+              previousLabel={"previous"}
+              nextLabel={"next"}
+              breakLabel={"..."}
+              breakClassName={"break-me"}
+              pageCount={Math.ceil(items.length / itemsPerPage)}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={5}
+              onPageChange={handlePageClick}
+              containerClassName={styles.pagination}
+              subContainerClassName={`${styles.pages} ${styles.pagination}`}
+              activeClassName={styles.active}
+              forcePage={currentPage}
+            />
+          )}
+        </>
       </div>
     </div>
   );

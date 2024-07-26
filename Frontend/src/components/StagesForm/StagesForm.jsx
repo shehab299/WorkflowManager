@@ -1,50 +1,57 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import ReorderIcon from "@mui/icons-material/Reorder";
 import EditIcon from "@mui/icons-material/Edit";
 import { Reorder } from "framer-motion";
+import { StagesSchema } from "../../schemas/StagesSchema";
+import { useFormik } from "formik";
 import styles from "./StagesForm.module.css";
 
-export default function StagesForm({ stages,setStages }) {
-  const [stageName, setStageName] = useState("");
-  const [selectedRole, setSelectedRole] = useState("Admin");
+export default function StagesForm({ stages, setStages }) {
+  const onSubmit = (values, actions) => {
+    setStages([
+      ...stages,
+      {
+        id: stages.length + 1,
+        name: values.stageName,
+        role: values.selectedRole,
+      },
+    ]);
+    actions.setFieldValue("stageName", "");
+  };
+
+  const {
+    values,
+    errors,
+    touched,
+    isSubmitting,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+  } = useFormik({
+    initialValues: {
+      stageName: "",
+      selectedRole: "Admin",
+      stageEditedName: "",
+    },
+    validationSchema: StagesSchema,
+    onSubmit,
+  });
+
   const [editedRole, setEditedRole] = useState("Admin");
   const [editingStage, setEditingStage] = useState(null);
-  const [errors, setErrors] = useState({});
-  const addStageButtonRef = useRef(null);
+  const [EditErrors, setEditErrors] = useState(null);
   const SaveStageButtonRef = useRef(null);
   const [stageEditedName, setEditedStageName] = useState("");
 
-  const handleAddStage = () => {
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-    } else {
-      setErrors({});
-      if (stageName.trim() !== "") {
-        setStages([
-          ...stages,
-          {
-            id: `stage-${stages.length + 1}`,
-            name: stageName,
-            role: selectedRole,
-          },
-        ]);
-        setStageName("");
-      }
-    }
-  };
   const handleRemoveStage = (id) => {
     const updatedStages = stages.filter((stage) => stage.id !== id);
     setStages(updatedStages);
   };
 
-  const handleOptionChange = (event) => {
-    setSelectedRole(event.target.value);
-  };
-
   const handleReorder = (newStages) => {
     setStages(newStages);
   };
+
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -52,38 +59,28 @@ export default function StagesForm({ stages,setStages }) {
         if (SaveStageButtonRef.current) {
           SaveStageButtonRef.current.click();
         }
-      } else {
-        if (addStageButtonRef.current) {
-          addStageButtonRef.current.click();
-        }
-      }
+      } 
     }
   };
 
-  const validate = () => {
-    const newErrors = {};
-    if (!stageName.trim()) newErrors.title = "Stage name is required";
-    if (stageName.length > 70)
-      newErrors.title = "Stage name must be less than 70 characters";
-    return newErrors;
-  };
   const editValidate = () => {
     const newErrors = {};
     if (!stageEditedName.trim()) newErrors.edit = "Required field";
-    if (stageEditedName.length > 70)
-      newErrors.edit = "Stage name must be less than 70 characters";
+    if (stageEditedName.length > 50)
+      newErrors.edit = "Stage name must be less than 50 characters";
     return newErrors;
   };
+
   const handleEditStage = (stage) => {
     setEditingStage(stage);
     setEditedStageName(stage.name);
     setEditedRole(stage.role);
   };
 
-  const handleSaveStage = () => {
+    const handleSaveStage = () => {
     const validationErrors = editValidate();
     if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
+      setEditErrors(validationErrors);
     } else {
       const updatedStages = stages.map((stage) =>
         stage.id === editingStage.id
@@ -94,13 +91,19 @@ export default function StagesForm({ stages,setStages }) {
       setEditingStage(null);
       setEditedStageName("");
       setEditedRole("Admin");
-      setErrors({});
+      setEditErrors({});
     }
   };
+
   return (
     <div>
-      <Reorder.Group axis="y" values={stages} onReorder={handleReorder}>
-        {stages.map((item, key) => (
+      <Reorder.Group
+        axis="y"
+        values={stages}
+        onReorder={handleReorder}
+        className={styles.stagesContainer}
+      >
+        {stages.map((item) => (
           <Reorder.Item key={item.id} value={item} className={styles.stageli}>
             <div className={styles.stage}>
               <ReorderIcon className={styles.icon} />
@@ -124,10 +127,10 @@ export default function StagesForm({ stages,setStages }) {
                     <option value="User">User</option>
                   </select>
                   <button
-                    type="button"
-                    onClick={handleSaveStage}
+                    type="submit"
                     className={styles.saveButton}
                     ref={SaveStageButtonRef}
+                    onClick={handleSaveStage}
                   >
                     Save
                   </button>
@@ -154,49 +157,66 @@ export default function StagesForm({ stages,setStages }) {
         ))}
       </Reorder.Group>
 
-      <div className={styles.addStage}>
-        <input
-          type="text"
-          placeholder="Enter stage name"
-          value={stageName}
-          onChange={(e) => setStageName(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-        {errors.title && <p className={styles.error}>{errors.title}</p>}
+      <form onSubmit={handleSubmit}>
+        <div className={styles.addStage}>
+          <div className={styles.subcontainer}>
+            <input
+              type="text"
+              id="stageName"
+              name="stageName"
+              placeholder="Enter stage name"
+              value={values.stageName}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </div>
+          {errors.stageName && touched.stageName && (
+            <p className={styles.error}>{errors.stageName}</p>
+          )}
 
-        <label htmlFor="roles" className={styles.label}>
-          Choose Role
-        </label>
-        <div className={styles.roles}>
-          <div className={styles.role}>
-            <input
-              type="radio"
-              value="Admin"
-              checked={selectedRole === "Admin"}
-              onChange={handleOptionChange}
-              style={{ width: "20px", margin: "5px" }}
-            />
-            <label className={styles.label} style={{ margin: "5px" }}>
-              Admin
-            </label>
+          <label htmlFor="roles" className={styles.label}>
+            Choose Role
+          </label>
+          <div className={styles.roles}>
+            <div className={styles.role}>
+              <input
+                id="Admin"
+                name="selectedRole"
+                onChange={handleChange}
+                checked={values.selectedRole === "Admin"}
+                type="radio"
+                value="Admin"
+                style={{ width: "20px", margin: "5px" }}
+              />
+              <label className={styles.label} style={{ margin: "5px" }}>
+                Admin
+              </label>
+            </div>
+            <div className={styles.role}>
+              <input
+                id="User"
+                name="selectedRole"
+                onChange={handleChange}
+                checked={values.selectedRole === "User"}
+                type="radio"
+                value="User"
+                style={{ width: "20px", margin: "5px" }}
+              />
+              <label className={styles.label} style={{ margin: "5px" }}>
+                User
+              </label>
+            </div>
+            {errors.selectedRole && touched.selectedRole && (
+            <p className={styles.error}>{errors.selectedRole}</p>
+          )}
           </div>
-          <div className={styles.role}>
-            <input
-              type="radio"
-              value="User"
-              checked={selectedRole === "User"}
-              onChange={handleOptionChange}
-              style={{ width: "20px", margin: "5px" }}
-            />
-            <label className={styles.label} style={{ margin: "5px" }}>
-              User
-            </label>
-          </div>
+          <button
+            type="submit"
+          >
+            Add Stage
+          </button>
         </div>
-        <button type="button" onClick={handleAddStage} ref={addStageButtonRef}>
-          Add Stage
-        </button>
-      </div>
+      </form>
     </div>
   );
 }

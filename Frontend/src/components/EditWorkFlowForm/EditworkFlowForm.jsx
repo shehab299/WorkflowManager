@@ -1,26 +1,71 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./EditWorkFlowForm.module.css";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useWorkflows } from "../../contexts/WorkflowsContext";
 import StagesForm from "../StagesForm/StagesForm";
 
 
-const EditWorkFlowForm = ({ workflow }) => {
-  const [name, setName] = useState("");
+const EditWorkFlowForm = () => {
+  const [title, settitle] = useState("");
   const [description, setDescription] = useState("");
   const [stages, setStages] = useState([]);
   const navigate = useNavigate();
 
+  const [workflow, setWorkflow] = useState({});
+  const {id} = useParams()
+  const {fetchWorkflow,fetchStages,updateWorkflow,updateWorkflowStages} =useWorkflows();
+  const [initialTitle, setInitialTitle] = useState('');
+  const [initialDescription, setInitialDescription] = useState('');
+
+  
+  useEffect(() => {
+    const fetchWorkflowById = async () => {
+      try {
+        const data = await fetchWorkflow(id);
+        setWorkflow(data);
+        setInitialTitle(data.title);
+        setInitialDescription(data.description);
+      } catch (error) {
+        setSingleWorkflowError(error.message);
+      }
+    };
+    fetchWorkflowById();
+  }, [id]);
+
+  useEffect(() => {
+    const fetchStagesbyId = async () => {
+      try {
+        const data = await fetchStages(id);
+        setStages(data);
+      } catch (error) {
+        setSingleWorkflowError(error.message);
+      }
+    };
+    fetchStagesbyId();
+  }, [id]);
+
   useEffect(() => {
     if (workflow) {
-      setName(workflow.name || "");
+      settitle(workflow.title || "");
       setDescription(workflow.description || "");
-      setStages(workflow.stages || []);
     }
   }, [workflow]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ name, description, stages });
+    if(title!=initialTitle || description!=initialDescription)
+      await updateWorkflow(workflow.id,{title, description})
+
+    const orderedStages = stages.map((stage, index) => ({
+      ...stage,
+      order: index + 1
+    }));
+    for (const stage of orderedStages) {
+      await updateWorkflowStages(workflow.id, stage);
+    }
+    
+    console.log({ title, description, orderedStages });
     navigate("/workflow");
   };
 
@@ -35,8 +80,8 @@ const EditWorkFlowForm = ({ workflow }) => {
             type="text"
             id="name"
             className={styles.input}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={title}
+            onChange={(e) => settitle(e.target.value)}
           />
         </div>
         <div className={styles.formGroup}>
