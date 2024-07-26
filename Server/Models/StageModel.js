@@ -1,6 +1,7 @@
 const {DataTypes , Model} = require("sequelize");
 
 const sequelize = require("../Config/db");
+const AppError = require("../Utils/AppError");
 
 
 class Stage extends Model {};
@@ -56,7 +57,7 @@ async function validateOrderasync(stage){
     );
 
     if(stages.length > 0){
-        throw new Error("Order must be unique");
+        throw new AppError("Order must be unique");
     }
 }
 

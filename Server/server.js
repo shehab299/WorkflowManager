@@ -24,6 +24,8 @@ async function startServer(){
     });
 
     console.log("Database connected successfully!");
+
+    // showAllTables();  uncomment this line to see all tables in the database
     
     const port = process.env.PORT || 3000;
 
@@ -32,6 +34,28 @@ async function startServer(){
     
     });
 };
+
+
+async function showAllTables(){
+
+    sequelize.getQueryInterface().showAllTables()
+    .then(tables => {
+      console.log('Tables:', tables);
+      return Promise.all(tables.map(table => 
+        sequelize.getQueryInterface().describeTable(table)
+          .then(description => {
+            console.log(`Structure of table ${table}:`, description);
+          })
+          .catch(err => {
+            console.error(`Error describing table ${table}:`, err);
+          })
+      ));
+    })
+    .catch(err => {
+      console.error('Error retrieving tables:', err);
+    });
+}
+
 
 startServer();
 
