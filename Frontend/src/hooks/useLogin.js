@@ -3,13 +3,11 @@ import { useAuth } from "../contexts/AuthContext";
 import { jwtDecode } from "jwt-decode";
 
 function useLogin() {
-  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { dispatch } = useAuth();
 
   async function login({ email, password }) {
     setIsLoading(true);
-    setError("");
 
     const res = await fetch("http://localhost:3000/auth/login", {
       method: "POST",
@@ -19,7 +17,9 @@ function useLogin() {
     const data = await res.json();
 
     if (!res.ok) {
-      setError(data.message);
+      if (res.status === 401) {
+        throw new Error("Unauthorized");
+      }
       setIsLoading(false);
     } else {
       const token = data.token;
@@ -36,7 +36,7 @@ function useLogin() {
     }
   }
 
-  return { error, isLoading, login };
+  return { isLoading, login };
 }
 
 export default useLogin;

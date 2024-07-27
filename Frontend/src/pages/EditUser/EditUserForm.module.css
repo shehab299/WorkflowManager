@@ -46,3 +46,7 @@
   height: 1px;
   background-color: rgba(0, 0, 0, 0.055);
 }
+
+.error {
+  color: var(--error-color);
+}

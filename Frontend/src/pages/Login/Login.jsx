@@ -1,69 +1,91 @@
-import React, { useState } from "react";
-import Header from "../../components/Header/Header";
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { useFormik } from "formik";
+
 import styles from "./Login.module.css";
+
 import useLogin from "../../hooks/useLogin";
+import LoginSchema from "../../schemas/LoginSchema";
 
 function Login() {
-  const { isLoading, error, login } = useLogin();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { login } = useLogin();
 
-  async function handleLogin() {
-    console.log({ email, password });
-    await login({ email, password });
-  }
+  const onSubmit = async (values, actions) => {
+    try {
+      await login({ email: values.email, password: values.password });
+      actions.resetForm();
+    } catch (error) {
+      if (error.message === "Unauthorized") {
+        actions.setErrors({
+          form: "Invalid Email or Password.",
+        });
+      } else {
+        console.error("Login error: ", error);
+      }
+    }
+  };
+
+  const {
+    values,
+    errors,
+    touched,
+    isSubmitting,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+  } = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: LoginSchema,
+    onSubmit,
+  });
 
   return (
-    <div>
-      <Header navigateTo="/signup" />
-      <main className={styles.body}>
-        <div className={styles.flexContainer_column}>
-          <h2 className={`${styles.title} josefin-sans-bold`}>Welcome Back</h2>
-          <div className={styles.gridContainer}>
-            <div
-              className={`${styles.flexContainer_column} ${styles.gridSection}`}
-            >
-              <label htmlFor="email" className="josefin-sans-bold">
-                Email
-              </label>
-              <input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                type="email"
-                id="email"
-                className={styles.inputBox}
-              />
-            </div>
-            <div
-              className={`${styles.flexContainer_column} ${styles.gridSection}`}
-            >
-              <label htmlFor="password" className="josefin-sans-bold">
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className={styles.inputBox}
-              />
-              <span className={`${styles.link} josefin-sans-light`}>
-                Forgot Password?
-              </span>
-            </div>
+    <div className={styles.container}>
+      <form className={styles.form} onSubmit={handleSubmit} autoComplete="off">
+        <div>
+          <div className={styles.field}>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            {touched.email && errors.email && (
+              <p className={styles.error}>{errors.email}</p>
+            )}
           </div>
-          <div className={`${styles.btnSection}`}>
-            <button
-              id="signup-btn"
-              className={`${styles.btn} ${styles.btn_1} josefin-sans-bold`}
-              onClick={handleLogin}
-            >
-              Login
-            </button>
+          <div className={styles.field}>
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              value={values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            {touched.password && errors.password && (
+              <p className={styles.error}>{errors.password}</p>
+            )}
           </div>
-          {error && <p className={styles.error}>{error}</p>}
         </div>
-      </main>
+        {errors.form && <p className={styles.error}>{errors.form}</p>}
+        <div>
+          <button type="submit" disabled={isSubmitting} className={styles.btn}>
+            Login
+          </button>
+          <p className={styles.signup}>
+            Don't have an account?{" "}
+            <NavLink className={styles.link} to="/signup">
+              Sign up
+            </NavLink>
+          </p>
+        </div>
+      </form>
     </div>
   );
 }

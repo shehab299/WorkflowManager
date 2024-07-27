@@ -16,7 +16,6 @@
   }
   
   .stage span {
-    font-size: 14px;
     color: #333;
     margin-right: 5px;
     padding-right: 10px;
@@ -28,7 +27,6 @@
   
   .removeStageButton {
     padding: 5px 10px;
-    font-size: 14px;
     color: white;
     background-color: #ff4d4d;
     border: none;
@@ -68,7 +66,7 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 16px;
+    /* font-size: 16px; */
     margin-top: 5px;
     transition: border-color 0.3s, box-shadow 0.3s;
   }
@@ -101,7 +99,7 @@
 
   .error {
     color: red;
-    font-size: 14px;
+    /* font-size: 14px; */
     margin-top: 5px;
   }
 

@@ -11,6 +11,8 @@
 
   gap: 4%;
   margin: 2% 5% 0 0;
+
+  position: relative;
 }
 
 .search {
@@ -24,4 +26,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  position: absolute;
+  bottom: 2rem; 
+
+  width: 100%;
 }
