@@ -11,6 +11,44 @@
   .pageside > h1 {
     margin: 5% 0 2% 0;
   }
+
+  .headerSide{
+    display: flex;
+    flex-direction: row;
+  }
+  .searchbarContainer {
+    display: flex;
+    align-items: center;
+  
+    width: 30%;
+  
+    border-radius: 4px;
+    padding: 0 0.5rem;
+  
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  
+    background-color: var(--inputfield-color);
+  }
+  .searchBar {
+    width: 100%;
+
+  border: none;
+  padding: 0.5rem 0.5rem;
+
+  background-color: var(--inputfield-color);
+  }
+
+  .searchBar:focus {
+    outline: none;
+  }
+
+  .searchBar::placeholder {
+    color: #999;
+  }
+
+  .icon{
+    opacity: 0.3;
+  }
   
   .addBtn {
     padding: 10px 15px;
@@ -21,7 +59,7 @@
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s, border-color 0.3s;
-    
+    margin-left: 20px;
   }
   
   .addBtn:hover {
@@ -30,6 +68,10 @@
   }
 
   .pagination {
+    position: absolute;
+    bottom: 0; 
+    left: 50%;
+    transform: translateX(-50%);
     margin: 10px;
     padding: 10px;
     display: flex;

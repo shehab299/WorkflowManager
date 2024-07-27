@@ -1,144 +1,169 @@
 .stages {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .stage {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .stage span {
-    color: #333;
-    margin-right: 5px;
-    padding-right: 10px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
-  .stagename{
-    width: 60%;
-  }
-  
-  .removeStageButton {
-    padding: 5px 10px;
-    color: white;
-    background-color: #ff4d4d;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .removeStageButton:hover {
-    background-color: #ff0000;
-  }
-  
-  .addStage {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .addStage button {
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .addStage button:hover {
-    background-color: #0056b3;
-  }
+}
 
-  .input,
-  .textarea,
-  .addStage input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    /* font-size: 16px; */
-    margin-top: 5px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-  
-  .input:focus,
-  .textarea:focus,
-  .addStage input:focus {
-    border-color: #225892;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
-    outline: none;
-  }
-  
-.role{
-    display:flex;
-    flex-direction:row;
-    margin: 10px;
-  }
+.stagesContainer {
+  margin: 5px;
 
-  .icon{
-    cursor: pointer;
-    margin: 5px;
-  }
-  .editicon{
-    cursor: pointer;
-    margin-right: 10px;
-  }
-  .stageli{
-    list-style: none;
-  }
+}
 
-  .error {
-    color: red;
-    /* font-size: 14px; */
-    margin-top: 5px;
-  }
+.subcontainer {
+  display: flex;
+  flex-direction: row;
+}
 
-  .editStageContainer {
-    display: flex;
-    align-items: center;
-  }
-  
-  .editStageInput {
-    width: 100%;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    margin-right: 10px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+.stage {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-  .editStageInput:focus{
-    border-color: #173e68;
-    box-shadow: 0 0 8px rgba(0, 72, 148, 0.25);
-    outline: none;
-  }
+.stage span {
+  font-size: 14px;
+  color: #333;
+  margin-right: 5px;
+  padding-right: 10px;
+}
 
-  .editStageSelect {
-    margin-right: 10px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .saveButton {
-    background-color: #4CAF50;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+.stagename {
+  width: 50%;
+  /* overflow: scroll; */
+}
 
-  .saveButton:hover {
-    background-color: #45a049;
-  }
+.removeStageButton {
+  padding: 5px 10px;
+  font-size: 14px;
+  color: white;
+  background-color: #ff4d4d;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.removeStageButton:hover {
+  background-color: #ff0000;
+}
+
+.addStage {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.addStage button {
+  padding: 10px 15px;
+  margin: 15px;
+  font-size: 16px;
+  color: white;
+  background-color: #379222;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+.subcontainer button:hover {
+  background-color: #0056b3;
+}
+
+
+.addStage button:hover {
+  background-color: #39b355;
+}
+
+.input,
+.textarea,
+.addStage input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  padding: 0.4rem 0.9rem;
+  background-color: var(--inputfield-color);
+}
+
+.input:focus,
+.textarea:focus,
+.addStage input:focus {
+  border-color: #225892;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+.role {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.icon {
+  cursor: pointer;
+  margin: 5px;
+}
+
+.editicon {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.stageli {
+  list-style: none;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.editStageContainer {
+  display: flex;
+  align-items: center;
+}
+
+.editStageInput {
+  width: 100%;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  margin-right: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.editStageInput:focus {
+  border-color: #173e68;
+  box-shadow: 0 0 8px rgba(0, 72, 148, 0.25);
+  outline: none;
+}
+
+.editStageSelect {
+  margin-right: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.saveButton {
+  background-color: #4CAF50;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.saveButton:hover {
+  background-color: #45a049;
+}

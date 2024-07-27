@@ -73,7 +73,7 @@ async function deleteWorkflow(req,res, next){
 
     await Workflow.destroy({
         where: {
-            id: req.id
+            id: req.workflowId
         }
     })
 
@@ -119,14 +119,13 @@ async function getStage(req,res,next){
 
 async function createStage(req,res,next){
 
-    console.log(req.workflowId);
+    console.log(req.body);
 
     const workflow = await Workflow.findByPk(req.workflowId);
 
     if(!workflow){
         next(new AppError(404,"Workflow Not Found"));
     }
-
 
     const options = {returning: true};
     const stage = await workflow.createStage(req.body, options);
