@@ -1,74 +1,48 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import styles from "./SideBar.module.css";
+
 import menuItems from "../../../data/menu_items.json";
 import SidebarMenuItem from "./SidebarMenuItem";
 
-import styles from "./SideBar.module.css";
-import moreIcon from "../../assets/icons/more.png";
-import logoutIcon from "../../assets/icons/log-out.png";
 import useLogout from "../../hooks/useLogout";
 
 const SidebarContext = createContext();
 
 const SideBar = () => {
   const { logout } = useLogout();
-  const navigate = useNavigate();
-  const location = useLocation();
 
   const [isMenuOpened, setIsMenuOpened] = useState(
     () => localStorage.getItem("isMenuOpened") === "true"
   );
-  const [activeMenuItem, setActiveMenuItem] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("isMenuOpened", isMenuOpened);
   }, [isMenuOpened]);
 
-  useEffect(() => {
-    const currentUrl = location.pathname;
-    const newUrl = `/${activeMenuItem}`;
-
-    if (activeMenuItem != null && currentUrl !== newUrl) {
-      navigate(newUrl);
-    }
-  }, [activeMenuItem, navigate, location.pathname]);
-
   const toggleMenu = () => {
     setIsMenuOpened(!isMenuOpened);
   };
 
-  const setActiveItem = (item) => {
-    setActiveMenuItem(item);
-  };
-
   return (
-    <SidebarContext.Provider
-      value={{ isMenuOpened, toggleMenu, activeMenuItem, setActiveItem }}
-    >
+    <SidebarContext.Provider value={{ isMenuOpened, toggleMenu }}>
       <div className={`${styles.sidebar} ${isMenuOpened ? styles.open : ""}`}>
         <div className={styles.more_icon}>
-          <SidebarMenuItem
-            onClick={toggleMenu}
-            path={moreIcon}
-            title={"Cairo University"}
-          />
+          <SidebarMenuItem onClick={toggleMenu} title={"Cairo University"} />
         </div>
         <div className={styles.menu_items}>
           {menuItems.map((menuItem) => (
-            <SidebarMenuItem
+            <NavLink
+              className={styles.navLink}
               key={menuItem.title}
-              onClick={() => setActiveItem(menuItem.title)}
-              path={menuItem.path}
-              title={menuItem.title}
-            />
+              to={`/${menuItem.title}`}
+            >
+              <SidebarMenuItem title={menuItem.title} />
+            </NavLink>
           ))}
         </div>
         <div className={styles.logout}>
-          <SidebarMenuItem
-            onClick={logout}
-            path={logoutIcon}
-            title={"logout"}
-          />
+          <SidebarMenuItem onClick={logout} title={"logout"} />
         </div>
       </div>
     </SidebarContext.Provider>

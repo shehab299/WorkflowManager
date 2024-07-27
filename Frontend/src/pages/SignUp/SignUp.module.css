@@ -1,95 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
-body,
-html {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  font-size: 20px;
-  font-family: "Josefin Sans", sans-serif;
-  background-color: #f7f7f7;
-}
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
-
-:root {
-  --color-brand-dim: #ffffff;
-  --color-brand-white: #fafaff;
-  --color-brand-dim: #efefef;
-  --color-brand-cream: #ecebe4;
-  --color-brand-grey: #cdcfd1;
-  --color-brand-black: #1c1c1c;
-
-  --color-grey: #d2d6de;
-  --color-black: #000000;
-  --color-black-opacity-10: rgba(0, 0, 0, 0.1);
-  --color-black-opacity-5: rgba(0, 0, 0, 0.05);
-
-  --font-size-extratiny: 10px;
-  --font-size-tiny: 12px;
-  --font-size-extrasmall: 16px;
-  --font-size-small: 18px;
-  --font-size-regular: 22px;
-  --font-size-subtitle: 22px;
-  --font-size-title: 30px;
-  --font-size-h2: 36px;
-  --font-size-h1: 40px;
-  --font-size-hero: 48px;
-}
-
-.josefin-sans-thin {
-  font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
-}
-
-.josefin-sans-extralight {
-  font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-}
-
-.josefin-sans-light {
-  font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.josefin-sans-regular {
-  font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.josefin-sans-medium {
-  font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.josefin-sans-semibold {
-  font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-}
-
-.josefin-sans-bold {
-  font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
-}
-
 .body {
   min-height: calc(100vh - 130px);
   background-color: var(--color-brand-dim);
@@ -114,7 +22,7 @@ html {
 .title {
   padding: 1rem 0;
   align-self: center;
-  font-size: var(--font-size-h2);
+  /* font-size: var(--font-size-h2); */
 }
 
 .gridContainer {
@@ -136,7 +44,7 @@ html {
 
 .gridSection_small > label,
 .gridSection > label {
-  font-size: var(--font-size-subtitle);
+  /* font-size: var(--font-size-subtitle); */
   padding: 0 0.2rem;
 }
 
@@ -181,7 +89,7 @@ html {
 .btn_1 {
   border: 4px solid var(--color-black);
   background-color: transparent;
-  font-size: var(--font-size-subtitle);
+  /* font-size: var(--font-size-subtitle); */
   transition: 0.15s all ease-in;
 }
 
@@ -190,50 +98,24 @@ html {
   color: var(--color-brand-white);
 }
 
-.btn_2 {
-  border: 4px solid var(--color-brand-black);
-  background-color: var(--color-brand-black);
-
-  color: var(--color-brand-dim);
-  font-size: var(--font-size-subtitle);
-
-  transition: 0.15s all ease-in;
-  opacity: 0.8;
-}
-
-.btn_2:hover {
-  opacity: 0.9;
-  box-shadow: 0 15px 35px var(--color-brand-black);
-}
-
-.btn_3 {
-  border: 4px solid var(--color-brand-grey);
-  color: var(--color-brand-grey);
-  background-color: transparent;
-  font-size: var(--font-size-subtitle);
-  transition: 0.15s all ease-in;
-}
-
-.btn_3:hover {
-  background-color: var(--color-brand-grey);
-  color: var(--color-brand-white);
-}
-
 .inputBox {
-  height: 45px;
+  /* height: 45px; */
   border-radius: 6px;
-  border: 3px solid var(--color-black);
+  /* border: 1px solid var(--color-black); */
   background-color: var(--color-black-opacity-5);
   padding: 0.6rem 0.8rem;
-  font-size: var(--font-size-small);
+
+  outline: none;
+  border: none;
+  /* font-size: var(--font-size-small); */
 }
 
 .textArea {
   border-radius: 6px;
-  border: 3px solid var(--color-black);
+  /* border: 3px solid var(--color-black); */
   background-color: var(--color-black-opacity-5);
   padding: 0.6rem 0.8rem;
-  font-size: var(--font-size-regular);
+  /* font-size: var(--font-size-regular); */
   resize: none;
 }
 

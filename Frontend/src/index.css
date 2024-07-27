@@ -1,9 +1,28 @@
 :root {
   --error-color: #fc8181;
   --inputfield-color: #f3f4f6ff;
-  --themecolor-secondary: #00bdd6ff;
-  --themecolor-secondary-light: #c8f9ffff;
-  --font-color: #323842FF;
+  --themecolor-secondary: #00BDD6FF;
+  --themecolor-secondary-light: #A6F5FFFF;
+  --font-color: #323842ff;
+
+  --color-brand-dim: #ffffff;
+  --color-brand-white: #fafaff;
+  --color-brand-dim: #efefef;
+  --color-brand-cream: #ecebe4;
+  --color-brand-grey: #cdcfd1;
+  --color-brand-black: #000000a9;
+  --color-grey: #d2d6de;
+  /* --color-black: #000000; */
+  --color-black-opacity-10: rgba(0, 0, 0, 0.1);
+  --color-black-opacity-5: rgba(0, 0, 0, 0.05);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -32,14 +51,6 @@ button {
   cursor: pointer;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
-
 input.inputError,
 select.input-error {
   border: 1px var(--error-color) solid;
@@ -48,5 +59,3 @@ select.input-error {
 ::placeholder {
   opacity: 0.3;
 }
-
-

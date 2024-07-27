@@ -8,7 +8,6 @@ const Header = ({navigateTo}) => {
   const navigate = useNavigate();
 
   const handlePageSwitch = () => {
-    // Navigate to Sign Up page on clicking the switch to button
     console.log("Switching to " + navigateTo);
     navigate(navigateTo)
   };
@@ -20,11 +19,11 @@ const Header = ({navigateTo}) => {
           <img src={logo} alt="logo" />
         </div>
         <div className={HeaderCSS.headerTitle}>
-          <h1 className="josefin-sans-bold">Cairo University</h1>
+          <h1>Cairo University</h1>
         </div>
         <button
           onClick={handlePageSwitch}
-          className={`${InputCSS.btn} ${InputCSS.btn_1} josefin-sans-bold`}
+          className={`${InputCSS.btn} ${InputCSS.btn_1}`}
         >
           {navigateTo === "/login" ? "Login" : "Sign Up"}
         </button>

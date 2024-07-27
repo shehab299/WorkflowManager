@@ -22,22 +22,8 @@
   
 }
 
-.header > .title {
-  font-size: var(--font-size-h2);
-  
-}
-
-.header > .info {
-  font-size: var(--font-size-subtitle);
-}
-
 .section {
   gap: 0.7rem;
-}
-
-.section > .title {
-  font-size: var(--font-size-title);
-  
 }
 
 .section > .text {
@@ -49,9 +35,6 @@
   padding: 0.5rem 1.5rem;
   display: flex;
   flex-direction: column;
-}
-
-.list__item {
 }
 
 .btn_section {

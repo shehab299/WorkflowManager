@@ -3,7 +3,7 @@ import React, { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 
-import EditUserSchema from "../../schemas/EditUserSchema";
+import EditUserSchema from "../../schemas/EditUserSchema.js";
 import Button from "../../components/Button/Button";
 import TextInput from "../../components/TextInput/TextInput";
 import styles from "./EditUserForm.module.css";
